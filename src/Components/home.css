@@ -1,5 +1,5 @@
 .bg-logo {
-    background-image: url(name-logo.svg);
+    background-image: url(/name-logo.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,7 +28,7 @@
 
 .about-btn::after{
     content: '';
-    background-image: url(right-arrow.svg);
+    background-image: url(/right-arrow.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -58,7 +58,7 @@
 
 .latestprojects-btn::after{
     content: '';
-    background-image: url(right-arrow.svg);
+    background-image: url(/right-arrow.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
