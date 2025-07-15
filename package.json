@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.23.5",
     "jquery": "^3.7.1",
     "matter-attractors": "^0.1.6",
     "matter-js": "^0.12.0",

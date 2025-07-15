@@ -14,6 +14,10 @@
         width: 300px;
         height: 300px
     }
+    .skills > li{
+        padding: 4px 5px;
+        font-size: 11px;
+    }
 }
 
 
@@ -23,6 +27,7 @@
         height: 200px;
         transform: translateY(-65px);   
     }
+    
 }
 
 
@@ -81,4 +86,25 @@
     content: none; /* hides the arrow */
     display: none;
   }
+}
+
+
+.skills > li{
+    border: 1px solid #ffffff52;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.show{
+    scale: 1;
+    opacity: 1;
+    transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.hide{
+    scale: 0.25;
+    opacity: 0;
+    transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
