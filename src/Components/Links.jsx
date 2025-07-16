@@ -4,10 +4,10 @@ import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-const Links = () => {
+const Links = React.forwardRef((props,ref) => {
     return (
         <>
-            <div className="links -translate-y-1 mr-4 md:mr-10 flex gap-5 relative z-20 text-2xl text-gray-600 flex-col ml-auto " >
+            <div ref={ref} className="links -translate-y-1 mr-4 md:mr-10 flex gap-5 relative z-20 text-2xl text-gray-600 flex-col ml-auto " >
                 <a href="https://www.linkedin.com/in/abdullah-anwar-a4013633a/" target="_blank" rel="noopener noreferrer">
                     <GrLinkedinOption className=' pointer-events-auto sm:w-[37px] hover:text-[#fff] hover:scale-125 cursor-pointer transition-scale duration-150 text-[#c3c5d4] h-auto ' />
                 </a>
@@ -26,7 +26,7 @@ const Links = () => {
             </div>
         </>
     )
-}
+})  
 
 export default Links
 

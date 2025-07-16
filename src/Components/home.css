@@ -108,3 +108,61 @@
     opacity: 0;
     transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
+
+.MERNStack > div{
+    transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
+}
+
+.MERNStack > div:hover {
+    cursor: pointer;
+    scale: 1.15;
+    transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
+    background-color: #1f2667e6;
+    border-radius: 10px;
+    padding: 20px 0px;
+}
+
+.MERNStack > div::after{
+    text-align: center;
+    width: 140px;
+    height: 40px;
+    padding: 10px 0px;
+    border-radius: 20px;
+    top: -20px;
+    left: -75%;
+    position: absolute;
+    z-index: -1;
+    font-weight: 500;
+}
+
+.MERNStack > div:nth-child(1)::after {
+    content: 'MongoDB';
+    background-color: #47a248;
+}
+
+.MERNStack > div:nth-child(2)::after {
+    content: 'Express';
+    background-color: #ffffff;
+    color: black;
+}
+
+.MERNStack > div:nth-child(3)::after {
+    content: 'React';
+    background-color: #61DBFB;
+    color: black;
+}
+
+.MERNStack > div:nth-child(4)::after {
+    content: 'Node.js';
+    background-color: #3C873A;
+}
+
+.MERNStack > div:hover::after{
+    top: -60%;
+    transition: top 0.15s ease-in-out;
+}
+
+
+.navAndDiscHide{
+    opacity: 0;
+}

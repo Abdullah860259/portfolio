@@ -149,3 +149,10 @@ function setWindowSize(m) {
   m.render.canvas.height = $(window).height();
 }
 
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    Matter.Runner.stop(runner);
+  } else {
+    Matter.Runner.run(runner, engine);
+  }
+});

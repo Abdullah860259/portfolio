@@ -4,9 +4,13 @@ import Links from './Links'
 import "./home.css"
 import { runMatter } from "./matter.js";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
+    const navAndDisc = useRef(null);
+    const mainContent = useRef(null);
+    const Linksref = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
     useEffect(() => {
         const { render } = runMatter();
@@ -21,16 +25,21 @@ const Home = () => {
         <>
             <section className=" relative  flex justify-center items-center flex-col landing-page h-screen w-screen overflow-auto bg-[#111111]  ">
                 <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
-                <Nav />
+                <Nav ref={navAndDisc} />
                 <div className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'>
-                    <Links />
+                    <Links ref={Linksref} />
                 </div>
-                <div className="main-content text-white max-w-screen-xl px-12 md:px-28 relative z-10 lg:px-40 -translate-y-8  w-full pointer-events-none">
+                <div ref={mainContent} className="main-content text-white max-w-screen-xl px-12 md:px-28 relative z-10 lg:px-40 -translate-y-8  w-full pointer-events-none transition-opacity ease-in-out duration-100 delay-500">
                     <h1 className=" text-white font-bold leading-tight text-[24px] sm:text-[40px] md:text-[50px] lg:text-[64px] font-spartan pointer-events-none ">Hafiz Abdullah Anwar</h1>
                     <p className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</p>
                     <button
                         className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] '
-                        onClick={() => setshowAboutMe(!showAboutMe)}
+                        onClick={() => {
+                            setshowAboutMe(!showAboutMe),
+                            navAndDisc.current?.classList.toggle("navAndDiscHide")
+                            mainContent.current?.classList.toggle("navAndDiscHide")
+                            Linksref.current?.classList.toggle("navAndDiscHide")
+                        }}
                     >About Me</button>
                 </div>
                 <div className="bg-logo pointer-events-none"></div>
@@ -45,7 +54,12 @@ const Home = () => {
                         className='absolute top-0 left-0 w-full inset-0 h-full z-20 flex justify-center items-center px-2 md:px-6 overflow-y-hidden'>
                         <div className="about-me rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
                             <div className=' absolute top-2 right-2 z-30 cursor-pointer'
-                                onClick={() => setshowAboutMe(!showAboutMe)}
+                                onClick={() => {
+                                    setshowAboutMe(!showAboutMe);
+                                    navAndDisc.current?.classList.toggle("navAndDiscHide");
+                                    mainContent.current?.classList.toggle("navAndDiscHide");
+                                    Linksref.current?.classList.toggle("navAndDiscHide");
+                                }}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
                                 ></line></svg>
@@ -75,8 +89,8 @@ const Home = () => {
                                     <li>#adobeXD</li>
                                     <li>#figma</li>
                                 </ul>
-                                <h2 className='text-3xl font-semibold sm:mb-4 md-1 text-[#177fa2] font-poppins text-[24px] ' >MERN STACK</h2>
-                                <ul className='flex flex-wrap  w-[300px] justify-between '>
+                                <h2 className='text-3xl relative font-semibold sm:mb-4 md-1 text-[#177fa2] font-poppins text-[24px] ' >MERN STACK</h2>
+                                <ul className='flex flex-wrap after:content[""]  MERNStack w-[300px] justify-between '>
                                     <div className="mongo flex justify-between flex-col items-center sm:h-[90px] h-[50px] ">
                                         <div className="mongo-svg"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#47A248"
                                             stroke="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="">
