@@ -1,0 +1,24 @@
+.nav-links > li {
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.nav-links > li::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  background-color: #00c3ff;
+  transition: transform 0.3s ease-in-out;
+  transform-origin:right;
+}
+
+
+.nav-links > li:hover::before {
+  transform: scaleX(1); /* White retracts on hover */
+  transform-origin:left;
+}

@@ -133,6 +133,7 @@
     position: absolute;
     z-index: -1;
     font-weight: 500;
+    pointer-events: none;
 }
 
 .MERNStack > div:nth-child(1)::after {

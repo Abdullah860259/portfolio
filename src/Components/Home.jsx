@@ -23,28 +23,41 @@ const Home = () => {
 
     return (
         <>
-            <section className=" relative  flex justify-center items-center flex-col landing-page h-screen w-screen overflow-auto bg-[#111111]  ">
-                <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
-                <Nav ref={navAndDisc} />
-                <div className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'>
-                    <Links ref={Linksref} />
-                </div>
-                <div ref={mainContent} className="main-content text-white max-w-screen-xl px-12 md:px-28 relative z-10 lg:px-40 -translate-y-8  w-full pointer-events-none transition-opacity ease-in-out duration-100 delay-500">
-                    <h1 className=" text-white font-bold leading-tight text-[24px] sm:text-[40px] md:text-[50px] lg:text-[64px] font-spartan pointer-events-none ">Hafiz Abdullah Anwar</h1>
-                    <p className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</p>
+            <AnimatePresence>
+                <section className=" relative  flex justify-center items-center flex-col landing-page h-screen w-screen overflow-auto bg-[#111111]  ">
+                    <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
+                    <Nav ref={navAndDisc} />
+                    <motion.div
+                        className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'
+                        initial={{ opacity: 0, y: 50 }}   // Start invisible and below
+                        animate={{ opacity: 1, y: 0 }}    // Animate to visible and original position
+                        transition={{ duration: 0.8 }}    // Duration in seconds
+                    >
+                        <Links />
+                    </motion.div>
+                    <div
+                        ref={mainContent} className="main-content text-white max-w-screen-xl px-12 md:px-28 relative z-10 lg:px-40 -translate-y-8  w-full pointer-events-none transition-opacity ease-in-out duration-100 delay-500">
+                        <h1 className=" text-white font-bold leading-tight text-[24px] sm:text-[40px] md:text-[50px] lg:text-[64px] font-spartan pointer-events-none ">Hafiz Abdullah Anwar</h1>
+                        <p className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</p>
+                        <button
+                            className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] '
+                            onClick={() => {
+                                setshowAboutMe(!showAboutMe),
+                                    navAndDisc.current?.classList.toggle("navAndDiscHide")
+                                mainContent.current?.classList.toggle("navAndDiscHide")
+                                Linksref.current?.classList.toggle("navAndDiscHide")
+                            }}
+                        >About Me</button>
+                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}   // Start invisible and below
+                        animate={{ opacity: 1, y: 0 }}    // Animate to visible and original position
+                        transition={{ duration: 0.8 }}    // Duration in seconds
+                        className="bg-logo pointer-events-none"></motion.div>
                     <button
-                        className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] '
-                        onClick={() => {
-                            setshowAboutMe(!showAboutMe),
-                            navAndDisc.current?.classList.toggle("navAndDiscHide")
-                            mainContent.current?.classList.toggle("navAndDiscHide")
-                            Linksref.current?.classList.toggle("navAndDiscHide")
-                        }}
-                    >About Me</button>
-                </div>
-                <div className="bg-logo pointer-events-none"></div>
-                <button className='latestprojects-btn cursor-pointer relative top-28 bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px]  ' >Latest Works</button>
-            </section >
+                        className='latestprojects-btn cursor-pointer relative top-28 bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px]  ' >Latest Works</button>
+                </section >
+            </AnimatePresence>
             <AnimatePresence>
                 {showAboutMe && (
                     <motion.div
@@ -64,7 +77,7 @@ const Home = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
                                 ></line></svg>
                             </div>
-                            <div className="discription relative md:w-[45%] md:h-full sm:h-auto  w-full  flex flex-col sm:items-left items-center gap-8 sm:gap-2  sm:justify-between justify-center ">
+                            <div className=" select-none discription relative md:w-[45%] md:h-full sm:h-auto  w-full  flex flex-col sm:items-left items-center gap-8 sm:gap-2  sm:justify-between justify-center ">
                                 <h2 className='md:mb-4 mb-1  font-semibold text-[#177fa2] font-poppins text-[24px] ' >About Me</h2>
                                 <p className='sm:text-[16px] text-[12px] ' > I help business owners and busy web developers to design & develop creative websites that fits their vision and attracts the visitors to stay for ever. Technologies and tools that I use to create such awesome websites.</p>
                                 <ul className='flex flex-wrap skills' >
