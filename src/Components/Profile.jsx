@@ -19,7 +19,7 @@ const Profile = () => {
                 <div className="flex justify-center  flex-col gap-5 items-center pt-32 bg-[#040518]">
                     <div className="relative img-Cont w-[225px] h-[225px] rounded-full z-10 flex   overflow-hidden justify-center items-center">
                         <img
-                            src="/DP.png"
+                            src="/DPjpg.jpg"
                             alt="Profile"
                             className="w-[200px] h-[200px] rounded-full object-cover"
                         />
