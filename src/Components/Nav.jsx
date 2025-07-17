@@ -2,6 +2,7 @@ import React from 'react'
 import { FaHome } from 'react-icons/fa';
 import { GrLinkedinOption } from 'react-icons/gr';
 import "./nav.css"
+import { Link } from 'react-router-dom';
 export const Nav = React.forwardRef((props, ref) => {
   return (
     <>
@@ -12,9 +13,15 @@ export const Nav = React.forwardRef((props, ref) => {
         <ul
           className='hidden nav-links select-none sm:flex gap-5 md:gap-10  text-[#c3c5d4] text-[15px] sm:text-xl pointer-events-auto'
         >
-          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Home</li>
-          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Services</li>
-          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Contact</li>
+          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >
+          {props.home ? (
+            <Link to="/profile">Profile</Link>
+          ) : (
+            <Link to="/">Back to Home</Link>
+          )}
+          </li>
+          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' ><a href="/services">Services</a></li>
+          <li className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' ><a href="/contact">Contact</a></li>
         </ul>
         <div className='flex justify-center items-center gap-4' >
           <a href="https://wa.me/923101733247?text=Hello%2C%20I'm%20interested%20in%20your%20services%21

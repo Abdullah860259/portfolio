@@ -26,7 +26,7 @@ const Home = () => {
             <AnimatePresence>
                 <section className=" relative  flex justify-center items-center flex-col landing-page h-screen w-screen overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
-                    <Nav ref={navAndDisc} />
+                    <Nav ref={navAndDisc} home={true} />
                     <motion.div
                         className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'
                         initial={{ opacity: 0, y: 50 }}   // Start invisible and below
@@ -43,7 +43,7 @@ const Home = () => {
                             className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] '
                             onClick={() => {
                                 setshowAboutMe(!showAboutMe),
-                                    navAndDisc.current?.classList.toggle("navAndDiscHide")
+                                navAndDisc.current?.classList.toggle("navAndDiscHide")
                                 mainContent.current?.classList.toggle("navAndDiscHide")
                                 Linksref.current?.classList.toggle("navAndDiscHide")
                             }}
