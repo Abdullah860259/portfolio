@@ -43,16 +43,19 @@ const Home = () => {
                             className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] active:scale-90    '
                             onClick={() => {
                                 setshowAboutMe(!showAboutMe),
-                                navAndDisc.current?.classList.toggle("navAndDiscHide")
+                                    navAndDisc.current?.classList.toggle("navAndDiscHide")
                                 mainContent.current?.classList.toggle("navAndDiscHide")
                                 Linksref.current?.classList.toggle("navAndDiscHide")
                             }}
                         >About Me</button>
                     </div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}   // Start invisible and below
-                        animate={{ opacity: 1, y: 0 }}    // Animate to visible and original position
-                        transition={{ duration: 0.8 }}    // Duration in seconds
+                    <motion.div  // Start invisible and below
+                        animate={{ y: [-25, 5, -25] }}
+                         transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}   // Duration in seconds
                         className="bg-logo pointer-events-none"></motion.div>
                     <button
                         className='latestprojects-btn cursor-pointer relative top-28 bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 active:scale-90 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px]  ' >Latest Works</button>
