@@ -24,7 +24,7 @@ const Home = () => {
     return (
         <>
             <AnimatePresence>
-                <section className=" relative  flex justify-center items-center flex-col landing-page h-screen w-screen overflow-auto bg-[#111111]  ">
+                <section className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-screen overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
                     <Nav ref={navAndDisc} home={true} />
                     <motion.div
