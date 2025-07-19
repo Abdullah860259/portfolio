@@ -9,6 +9,7 @@
     transform: translateY(-50px);
 }
 
+
 @media (max-width:580px) {
     .bg-logo {
         width: 300px;
@@ -166,4 +167,8 @@
 
 .navAndDiscHide{
     opacity: 0;
+}
+
+.editor:hover::before {
+  transform: translate(-50%, -50%) scale(1.6);
 }

@@ -23,8 +23,7 @@ const Profile = () => {
 
     return (
         <>
-
-            <div className="profile w-full min-h-[100dvh] bg-[#040518] max-full overflow-hidden text-white">
+            <div className="profile w-full min-h-[100dvh]  bg-[#040518] overflow-auto text-white">
                 {ShowNav && (
                     <AnimatePresence>
                         <motion.div

@@ -5,15 +5,19 @@ import "./home.css"
 import { runMatter } from "./matter.js";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import AnimateOnScroll from './AnimateOnScroll.jsx';
+import AnimateOnScrollReverse from './AnimateOnScrollReverse.jsx';
 
 
 const Home = () => {
     const navAndDisc = useRef(null);
     const mainContent = useRef(null);
     const Linksref = useRef(null);
+    const latestworkref = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
     useEffect(() => {
         const { render } = runMatter();
+        // scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -24,7 +28,7 @@ const Home = () => {
     return (
         <>
             <AnimatePresence>
-                <section className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-screen overflow-auto bg-[#111111]  ">
+                <section className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
                     <Nav ref={navAndDisc} home={true} />
                     <motion.div
@@ -51,14 +55,17 @@ const Home = () => {
                     </div>
                     <motion.div  // Start invisible and below
                         animate={{ y: [-25, 5, -25] }}
-                         transition={{
+                        transition={{
                             duration: 3,
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}   // Duration in seconds
                         className="bg-logo pointer-events-none"></motion.div>
                     <button
-                        className='latestprojects-btn cursor-pointer relative top-28 bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 active:scale-90 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px]  ' >Latest Works</button>
+                        className='latestprojects-btn cursor-pointer relative top-28 bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 active:scale-90 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px]  
+                        '
+                        onClick={() => latestworkref.current.scrollIntoView({ behavior: "smooth" })}
+                    >Latest Works</button>
                 </section >
             </AnimatePresence>
             <AnimatePresence>
@@ -164,6 +171,148 @@ const Home = () => {
                         </div>
                     </motion.div>)}
             </AnimatePresence>
+            <section
+                className='w-full h-auto flex flex-col justify-center items-center text-black bg-[#fff] after:content-[""] relative after:absolute after:h-full after:w-[2px] after:bg-[#8bc3d6] after:top-4  '
+                ref={latestworkref}>
+                <div className='w-full p-4 h-auto  flex justify-center items-center'>
+                    <h1 className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >Latest Works</h1>
+                </div>
+                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
+                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#6f11b0] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
+                    </a>
+                    <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  flex-col ">
+                        <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row flex-col justify-center items-center content-center sm:justify-between sm:items-center">
+                            <AnimateOnScroll>
+                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/todoapp.webp" alt="Project 1" />
+                                </a>
+                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#6d11b0] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[45px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#6d11b0] after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                    To Do App
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </span>
+                            </AnimateOnScroll>
+                            <div className=' text-black w-full   sm:w-[45%] h-auto flex flex-col justify-items-start gap-6 sm:gap-4 sm:pr-12'>
+                                <h2 className='text-2xl  md:text-3xl font-bold select-none name  text-[#6e11b0]' >To Do App</h2>
+                                <p className='text-[16px] md:text-xl select-none name  text-[#6e11b0]' >{"(To Do App)"}</p>
+                                <p className='text-[14px]'>It is a simple to do app that allows you to create, update, and delete tasks. It is equipped with manually created Authenticaltion System and have a proper organized backend.</p>
+                                <ul className='flex row flex-wrap gap-2 text-[12px] md:text-sm select-none' >
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#React js</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Node js</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Express js</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#MongoDB</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Mongoose</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Jsonwebtoken</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Bcrypt</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#fc0307]  after:top-[50%] after:right-[10%]  '>
+                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#fc0307] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
+                    </a>
+                    <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
+                        <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
+                            <AnimateOnScrollReverse>
+                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/2.webp" alt="Project 1" />
+                                </a>
+                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#fc0307] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#fc0307] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                    Netflix Clone
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </span>
+                            </AnimateOnScrollReverse>
+                            <div className=' text-black w-full   sm:w-[45%] h-auto flex flex-col justify-items-start gap-6 sm:gap-4 sm:pl-12'>
+                                <h2 className='text-2xl  md:text-3xl font-bold select-none name  text-[#fc0307]' >Netflix</h2>
+                                <p className='text-[16px] md:text-xl select-none name  text-[#fc0307]' >{"(Netflix Clone)"}</p>
+                                <p className='text-[14px]'>It is the one of my initial projects. I have made it to test challenge my grip on CSS. It is a simple clone of Netflix website. It Consists on pure HTML and CSS</p>
+                                <ul className='flex row flex-wrap gap-2 text-[12px] md:text-sm select-none' >
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#HTMl</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#CSS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
+                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#354950] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
+                    </a>
+                    <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  flex-col ">
+                        <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row flex-col justify-center items-center content-center sm:justify-between sm:items-center">
+                            <AnimateOnScroll>
+                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/sd.webp" alt="Project 1" />
+                                </a>
+                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#354950] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[70px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#354950] after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                    Currency Converter
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </span>
+                            </AnimateOnScroll>
+                            <div className=' text-black w-full   sm:w-[45%] h-auto flex flex-col justify-items-start gap-6 sm:gap-4 sm:pr-12'>
+                                <h2 className='text-2xl  md:text-3xl font-bold select-none name  text-[#354950]' >Currency Converter</h2>
+                                <p className='text-[16px] md:text-xl select-none name  text-[#354950]' >{"(Currency Converter App)"}</p>
+                                <p className='text-[14px]'>It is also from my initial Projects. I have made it to anlyze my grip on Asyncronous Javascript. It is based on API.It totally consists on HTML CSS and JS.</p>
+                                <ul className='flex row flex-wrap gap-2 text-[12px] md:text-sm select-none' >
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#JavaScript</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#CSS</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#HTML</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#ccac6c]  after:top-[50%] after:right-[10%]  '>
+                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#ccac6c] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
+                    </a>
+                    <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
+                        <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
+                            <AnimateOnScrollReverse>
+                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/tictactow.webp" alt="Project 1" />
+                                </a>
+                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#ccac6c] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[120px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#ccac6c] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                    Tic Tack Tow Game
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </span>
+                            </AnimateOnScrollReverse>
+                            <div className=' text-black w-full   sm:w-[45%] h-auto flex flex-col justify-items-start gap-6 sm:gap-4 sm:pl-12'>
+                                <h2 className='text-2xl  md:text-3xl font-bold select-none name  text-[#ccac6c]' >Tic Tac Tow</h2>
+                                <p className='text-[16px] md:text-xl select-none name  text-[#ccac6c]' >{"(Tic Tac Tow Game)"}</p>
+                                <p className='text-[14px]'>It is a Tic Tac Tow Game based on intermediate level Javascript. It is a 2 player game. I had also created it my learning phase.</p>
+                                <ul className='flex row flex-wrap gap-2 text-[12px] md:text-sm select-none' >
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Javascript</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#CSS</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#HTML</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='w-full p-4 h-auto  flex justify-center items-center'>
+                    <h1 className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >What My Clients Say ?</h1>
+                </div>
+                <br />
+            </section>
         </>
     )
 }

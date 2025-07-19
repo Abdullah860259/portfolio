@@ -62,7 +62,7 @@
     transition: transform 0.2s ease-in;
 }
 
-.Double-Border:hover::before{
+.Double-Border:hover::before {
     transform: scaleX(1);
 }
 
@@ -78,12 +78,16 @@
     left: 50%;
 } */
 
-.further-Detail img{
+::-webkit-scrollbar-track {
+    background-color: #040518;
+}
+
+.further-Detail img {
     box-shadow: 1px 1px 100000px rgb(17, 17, 17);
 }
 
 
-.linear-Border::after{
+.linear-Border::after {
     content: '';
     width: 0%;
     height: 2px;
@@ -94,6 +98,6 @@
     left: 0px;
 }
 
-.linear-Border:hover::after{
+.linear-Border:hover::after {
     width: 100%;
 }

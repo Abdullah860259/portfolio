@@ -15,11 +15,11 @@ export const Nav = React.forwardRef((props, ref) => {
           className='hidden nav-links select-none sm:flex gap-5 md:gap-10  text-[#c3c5d4] text-[15px] sm:text-xl pointer-events-auto'
         >
           {props.home ? (
-            <Link to="/profile">
+            <Link className='overflow-visible' to="/profile">
               <motion.li
                 whileTap={{ scale: 0.8 }}
                 transition={{ duration: 0.05 }}
-                className="hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105"
+                className="hover:cursor-pointer hover:text-white overflow-visible transition-colors duration-200 hover:scale-105"
               >
                 Profile
               </motion.li>
@@ -36,7 +36,7 @@ export const Nav = React.forwardRef((props, ref) => {
             </Link>
           )}
 
-          <a href="/services">
+          <a className='overflow-visible' href="/services">
             <motion.li
               whileTap={{ scale: 0.8 }}
               transition={{ duration: 0.05 }}
