@@ -3,6 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home'
 import Profile from './Components/Profile'
 import './index.css'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 function App() {
     return (
         <>

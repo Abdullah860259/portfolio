@@ -4,9 +4,13 @@ import Links from './Links'
 import "./home.css"
 import { runMatter } from "./matter.js";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from 'react-router-dom';
 import AnimateOnScroll from './AnimateOnScroll.jsx';
 import AnimateOnScrollReverse from './AnimateOnScrollReverse.jsx';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import { EffectFlip } from 'swiper/modules';
+import 'swiper/css/effect-flip';
+
 
 
 const Home = () => {
@@ -17,7 +21,9 @@ const Home = () => {
     const [showAboutMe, setshowAboutMe] = useState(false)
     useEffect(() => {
         const { render } = runMatter();
-        // scrollTo(0, 0);
+        // setTimeout(() => {
+        //     window.scrollTo({ top: 0, behavior: 'smooth' }); // or 'auto'
+        // }, 0);
     }, []);
 
     useEffect(() => {
@@ -28,7 +34,7 @@ const Home = () => {
     return (
         <>
             <AnimatePresence>
-                <section className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
+                <header className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
                     <Nav ref={navAndDisc} home={true} />
                     <motion.div
@@ -66,7 +72,7 @@ const Home = () => {
                         '
                         onClick={() => latestworkref.current.scrollIntoView({ behavior: "smooth" })}
                     >Latest Works</button>
-                </section >
+                </header >
             </AnimatePresence>
             <AnimatePresence>
                 {showAboutMe && (
@@ -308,11 +314,100 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='w-full p-4 h-auto  flex justify-center items-center'>
+                <div className='w-full px-4 absolute -bottom-5 z-50 h-auto  flex justify-center items-center'>
                     <h1 className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >What My Clients Say ?</h1>
                 </div>
                 <br />
             </section>
+            <section className='w-full sm:my-12  sm:mt-20  px-4 h-auto flex  justify-center items-center '>
+                <div className='max-w-[850px] w-full relative ' >
+                    <div className="custom-prev hidden sm:block left-0 -translate-y-1/2  cursor-pointer absolute top-1/2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
+                    </div>
+                    <Swiper
+                        className='w-[calc(100%-150px)] h-auto shadow-lg shadow-[#00000023] '
+                        modules={[Navigation, Pagination, EffectFlip]}
+                        navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
+                        pagination={{ clickable: true }}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        effect="flip" // ✅
+                    // cubeEffect={{ shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }}
+                    >
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                            <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <div className='flex w-full  flex-col justify-center items-end'>
+                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
+                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                            <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <div className='flex w-full  flex-col justify-center items-end'>
+                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
+                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                            <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <div className='flex w-full  flex-col justify-center items-end'>
+                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
+                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                    <div className="custom-next  hidden sm:block absolute top-1/2 -translate-y-1/2 translate-x-1/4 right-0  cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg>
+                    </div>
+                </div>
+            </section>
+            <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
+                <p className='text-[#8d8e9b] select-none text-[15px] sm:text-xs'>Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved</p>
+                <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
+                    <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="16"></path>
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="16"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1595B6"></stop>
+                                <stop offset="1" stop-color="#1595B6" stop-opacity="0"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <ul className='flex justify-center items-center gap-4 flex-row ' >
+                    <li class="linkedin-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90 ">
+                        <a href="https://www.linkedin.com/in/abdullah-anwar-a4013633a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="twitter-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://x.com/Abdulla55799774" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="instagram-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://www.instagram.com/abdu_7817/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="gmail-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="mailto:abdullah860259@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                    </li>
+                    <li class="github-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://github.com/Abdullah860259" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                </ul>
+            </footer>
         </>
     )
 }
