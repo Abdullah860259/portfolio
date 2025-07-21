@@ -21,7 +21,7 @@ export default function AnimateOnScrollReverse({ children, className }) {
     <MotionDiv
       ref={ref}
       initial={{ opacity: 0.5, x:0}}
-      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0.5, x: 100 }}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0.8, x: 100 }}
       transition={{ duration: 0.6 }}
       className={"flex justify-center items-center group relative z-30 "}
     >

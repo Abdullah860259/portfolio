@@ -19,6 +19,7 @@ const Home = () => {
     const Linksref = useRef(null);
     const latestworkref = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
+    const [showTopper, setshowTopper] = useState(false)
     useEffect(() => {
         const { render } = runMatter();
         // setTimeout(() => {
@@ -30,6 +31,26 @@ const Home = () => {
         document.body.style.overflow = showAboutMe ? "hidden" : "auto";
         return () => (document.body.style.overflow = "auto");
     }, [showAboutMe]);
+
+    useEffect(() => {
+        const scrollHandler = () => {
+            const scrollY = window.scrollY + window.innerHeight;
+            const totalHeight = document.documentElement.scrollHeight;
+            const percentageHeight = (scrollY / totalHeight) * 100;
+            if (percentageHeight > 50) {
+                setshowTopper(true)
+            } else {
+                setshowTopper(false)
+            }
+
+        };
+        window.addEventListener("scroll", scrollHandler);
+        return () => {
+            window.removeEventListener("scroll", scrollHandler);
+        }
+    })
+
+
 
     return (
         <>
@@ -178,7 +199,7 @@ const Home = () => {
                     </motion.div>)}
             </AnimatePresence>
             <section
-                className='w-full h-auto flex flex-col justify-center items-center text-black bg-[#fff] after:content-[""] relative after:absolute after:h-full after:w-[2px] after:bg-[#8bc3d6] after:top-4  '
+                className='w-full h-auto flex flex-col justify-center items-center text-black bg-[#fff] after:content-[""] relative after:absolute after:h-full after:w-[2px] after:bg-[#8bc3d6] after:top-4 after:hidden after:sm:block  '
                 ref={latestworkref}>
                 <div className='w-full p-4 h-auto  flex justify-center items-center'>
                     <h1 className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >Latest Works</h1>
@@ -191,7 +212,7 @@ const Home = () => {
                         <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row flex-col justify-center items-center content-center sm:justify-between sm:items-center">
                             <AnimateOnScroll>
                                 <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
-                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/todoapp.webp" alt="Project 1" />
+                                    <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/todoapp.webp" alt="Project 1" />
                                 </a>
                                 <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#6d11b0] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[45px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#6d11b0] after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
                                     To Do App
@@ -220,14 +241,14 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#fc0307]  after:top-[50%] after:right-[10%]  '>
-                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                    <a href="https://projectabdullah.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#fc0307] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
                         <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
                             <AnimateOnScrollReverse>
                                 <a href="https://projectabdullah.netlify.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
-                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/2.webp" alt="Project 1" />
+                                    <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/2.webp" alt="Project 1" />
                                 </a>
                                 <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#fc0307] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#fc0307] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
                                     Netflix Clone
@@ -257,8 +278,8 @@ const Home = () => {
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  flex-col ">
                         <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row flex-col justify-center items-center content-center sm:justify-between sm:items-center">
                             <AnimateOnScroll>
-                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
-                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/sd.webp" alt="Project 1" />
+                                <a href="https://abducurrency.netlify.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:ml-10 hover:scale-110 transition duration-100 ease-in  ' src="/sd.webp" alt="Project 1" />
                                 </a>
                                 <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#354950] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[70px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#354950] after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
                                     Currency Converter
@@ -289,8 +310,8 @@ const Home = () => {
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
                         <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
                             <AnimateOnScrollReverse>
-                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
-                                    <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/tictactow.webp" alt="Project 1" />
+                                <a href="https://tttabdullah.netlify.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/tictactow.webp" alt="Project 1" />
                                 </a>
                                 <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#ccac6c] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[120px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#ccac6c] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
                                     Tic Tack Tow Game
@@ -321,7 +342,7 @@ const Home = () => {
             </section>
             <section className='w-full sm:my-12  sm:mt-20  px-4 h-auto flex  justify-center items-center '>
                 <div className='max-w-[850px] w-full relative ' >
-                    <div className="custom-prev hidden sm:block left-0 -translate-y-1/2  cursor-pointer absolute top-1/2">
+                    <div className="custom-prev hidden sm:block left-0 -translate-y-1/2  cursor-pointer absolute top-1/2 hover:scale-125 transition duration-100 ease active:scale-90">
                         <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
                     </div>
                     <Swiper
@@ -334,7 +355,7 @@ const Home = () => {
                         effect="flip" // ✅
                     // cubeEffect={{ shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }}
                     >
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -346,7 +367,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -358,7 +379,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 py-14 ' >
+                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10     ' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -371,7 +392,7 @@ const Home = () => {
                             </div>
                         </SwiperSlide>
                     </Swiper>
-                    <div className="custom-next  hidden sm:block absolute top-1/2 -translate-y-1/2 translate-x-1/4 right-0  cursor-pointer">
+                    <div className="custom-next  hidden sm:block absolute top-1/2 -translate-y-1/2 translate-x-1/4 right-0  cursor-pointer hover:scale-125 transition duration-100 ease active:scale-90">
                         <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg>
                     </div>
                 </div>
@@ -408,6 +429,17 @@ const Home = () => {
                     </li>
                 </ul>
             </footer>
+
+            {showTopper && (
+                <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                    className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
+                </motion.div>
+            )}
         </>
     )
 }
