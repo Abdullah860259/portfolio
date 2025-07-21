@@ -226,7 +226,7 @@ const Home = () => {
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
                         <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
                             <AnimateOnScrollReverse>
-                                <a href="https://todoabdullah.vercel.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                <a href="https://projectabdullah.netlify.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
                                     <img className='sm:w-[260px] relative z-30 md:w-[400px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/2.webp" alt="Project 1" />
                                 </a>
                                 <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#fc0307] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#fc0307] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
@@ -251,7 +251,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
-                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                    <a href="https://abducurrency.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#354950] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  flex-col ">
@@ -283,7 +283,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#ccac6c]  after:top-[50%] after:right-[10%]  '>
-                    <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
+                    <a href="https://tttabdullah.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#ccac6c] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
                     <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
