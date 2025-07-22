@@ -19,12 +19,14 @@ const Home = () => {
     const Linksref = useRef(null);
     const latestworkref = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
-    const [showTopper, setshowTopper] = useState(false)
+    const [showTopper, setshowTopper] = useState(false);
+    const [showNavColomn, setShowNavColomn] = useState(
+        window.innerWidth < 658 // true or false initially
+    );
     useEffect(() => {
-        const { render } = runMatter();
-        // setTimeout(() => {
-        //     window.scrollTo({ top: 0, behavior: 'smooth' }); // or 'auto'
-        // }, 0);
+        if (window.innerWidth > 658) {
+            const { render } = runMatter();
+        }
     }, []);
 
     useEffect(() => {
@@ -49,15 +51,21 @@ const Home = () => {
             window.removeEventListener("scroll", scrollHandler);
         }
     })
+    useEffect(() => {
+        const handleResize = () => {
+            setShowNavColomn(window.innerWidth < 658);
+        };
 
-
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <>
             <AnimatePresence>
                 <header className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
-                    <Nav ref={navAndDisc} home={true} />
+                    <Nav ref={navAndDisc} home={true} NavColomn={showNavColomn} />
                     <motion.div
                         className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'
                         initial={{ opacity: 0, y: 50 }}   // Start invisible and below
@@ -346,7 +354,7 @@ const Home = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
                     </div>
                     <Swiper
-                        className='w-[calc(100%-150px)] h-auto shadow-lg shadow-[#00000023] '
+                        className='w-[calc(100%-150px)] w-min-[300px] h-auto shadow-lg shadow-[#00000023] '
                         modules={[Navigation, Pagination, EffectFlip]}
                         navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
                         pagination={{ clickable: true }}
@@ -432,8 +440,8 @@ const Home = () => {
 
             {showTopper && (
                 <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >

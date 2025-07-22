@@ -10,6 +10,9 @@ import { motion } from "framer-motion";     // Radix Icons
 const Profile = () => {
     const [showProof, setshowProof] = useState(false);
     const [ShowNav, setShowNav] = useState(true);
+    const [showNavColomn, setShowNavColomn] = useState(
+        window.innerWidth < 658 // true or false initially
+    );
     useEffect(() => {
         const handler = (e) => e.preventDefault;
         if (showProof) {
@@ -20,7 +23,14 @@ const Profile = () => {
             document.removeEventListener("wheel", handler);
         }
     }, [showProof])
+    useEffect(() => {
+        const handleResize = () => {
+            setShowNavColomn(window.innerWidth < 658);
+        };
 
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (
         <>
             <div className="profile w-full min-h-[100dvh]  bg-[#040518] overflow-auto text-white">
@@ -33,7 +43,7 @@ const Profile = () => {
                             exit={{ opacity: 0, x: 100 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Nav home={false} />
+                            <Nav home={false} NavColomn={showNavColomn} />
                         </motion.div>
                     </AnimatePresence>
                 )}
