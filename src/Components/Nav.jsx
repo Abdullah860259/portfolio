@@ -75,7 +75,7 @@ export const Nav = React.forwardRef((props, ref) => {
         <AnimatePresence>
           {showColomn && (
             <motion.div
-              className="absolute  pointer-events-auto top-0 right-0 w-1/2 h-screen z-50 bg-[rgb(4,5,24)] flex flex-col items-center justify-start py-4"
+              className="absolute  pointer-events-auto top-0 right-0 w-1/2 h-[100dvh] z-50 bg-[rgb(4,5,24)] flex flex-col items-center justify-start py-4"
               initial={{ x: "100%" }}
               animate={{ x: showColomn ? 0 : "100%" }}
               transition={{ duration: 0.2 }}
