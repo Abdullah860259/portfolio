@@ -29,7 +29,7 @@ export default function AnimateOnScroll({ children, className }) {
       ref={ref}
       initial={{ opacity: 0.5, x: -220 }}
       animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0.8, x: -220 }}
-      transition={{ duration: 0.8, delay: 0.1, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className={"flex justify-center items-center group relative z-30 "}
     >
       {children}
