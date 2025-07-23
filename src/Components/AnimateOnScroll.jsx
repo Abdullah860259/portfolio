@@ -1,28 +1,35 @@
 "use client"
+import { i } from "framer-motion/client"
 import { motion } from "motion/react"
 import { useRef, useEffect, useState } from "react"
 
-const MotionDiv = motion("div")  // ✅ correct motion component
+const MotionDiv = motion("div")
 
 export default function AnimateOnScroll({ children, className }) {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)
+  const [hasAnimated, sethasAnimated] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          sethasAnimated(true);
+        }
+      },
       { threshold: 0.3 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   return (
     <MotionDiv
       ref={ref}
-      initial={{ opacity: 0.5, x:-100}}
-      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0.8, x: -100 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0.5, x: -220 }}
+      animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0.8, x: -220 }}
+      transition={{ duration: 0.8, delay: 0.1, ease: "easeInOut" }}
       className={"flex justify-center items-center group relative z-30 "}
     >
       {children}

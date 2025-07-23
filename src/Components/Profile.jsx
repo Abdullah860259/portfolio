@@ -116,7 +116,7 @@ const Profile = () => {
                                         animate={{ scale: 1 }}
                                         exit={{ scale: 0 }}
                                         transition={{ duration: 0.15 }}
-                                        className='absolute left-0 top-0 select-none  z-10 w-[100%] h-screen p-10 '
+                                        className='absolute left-0 top-0 select-none flex justify-center items-center z-10 w-[100%] h-screen p-10 '
                                     >
                                         <img
                                             src='/Proof.png'

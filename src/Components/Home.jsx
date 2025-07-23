@@ -110,7 +110,7 @@ const Home = () => {
                         animate={{ scale: 1 }}
                         exit={{ scale: 0 }}
                         className='absolute top-0 left-0 w-full inset-0 h-full z-20 flex justify-center items-center px-2 md:px-6 overflow-y-hidden'>
-                        <div className="about-me rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
+                        <div className="about-me shadow-xl shadow-[#ffffff4b]  rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
                             <div className=' absolute top-2 right-2 z-30 cursor-pointer'
                                 onClick={() => {
                                     setshowAboutMe(!showAboutMe);
@@ -212,7 +212,7 @@ const Home = () => {
                 <div className='w-full p-4 h-auto  flex justify-center items-center'>
                     <h1 className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >Latest Works</h1>
                 </div>
-                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
+                <div className='after:contents-[""] after:hidden after:sm:block relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
                     <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#6f11b0] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
@@ -248,7 +248,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#fc0307]  after:top-[50%] after:right-[10%]  '>
+                <div className='after:contents-[""] relative after:absolute after:hidden after:sm:block after:w-[40%] after:h-[2px] after:bg-[#fc0307]  after:top-[50%] after:right-[10%]  '>
                     <a href="https://projectabdullah.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#fc0307] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
@@ -279,7 +279,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
+                <div className='after:contents-[""] relative after:absolute after:hidden after:sm:block after:w-[40%] after:h-[2px] after:bg-[#354950]  after:top-[50%] after:left-[10%]  '>
                     <a href="https://abducurrency.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#354950] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
@@ -311,7 +311,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='after:contents-[""] relative after:absolute after:w-[40%] after:h-[2px] after:bg-[#ccac6c]  after:top-[50%] after:right-[10%]  '>
+                <div className='after:contents-[""] relative after:absolute after:hidden after:sm:block after:w-[40%] after:h-[2px] after:bg-[#ccac6c]  after:top-[50%] after:right-[10%]  '>
                     <a href="https://tttabdullah.netlify.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#ccac6c] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
                     </a>
@@ -348,13 +348,13 @@ const Home = () => {
                 </div>
                 <br />
             </section>
-            <section className='w-full sm:my-12  sm:mt-20  px-4 h-auto flex  justify-center items-center '>
+            <section className='w-full sm:my-12  my-12 sm:mt-20  px-4 h-auto flex  justify-center items-center '>
                 <div className='max-w-[850px] w-full relative ' >
                     <div className="custom-prev hidden sm:block left-0 -translate-y-1/2  cursor-pointer absolute top-1/2 hover:scale-125 transition duration-100 ease active:scale-90">
                         <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#16789f"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
                     </div>
                     <Swiper
-                        className='w-[calc(100%-150px)] w-min-[300px] h-auto shadow-lg shadow-[#00000023] '
+                        className='sm:w-[calc(100%-150px)] w-full w-min-[300px] h-auto shadow-lg shadow-[#00000023] '
                         modules={[Navigation, Pagination, EffectFlip]}
                         navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
                         pagination={{ clickable: true }}
@@ -363,7 +363,7 @@ const Home = () => {
                         effect="flip" // ✅
                     // cubeEffect={{ shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }}
                     >
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10' >
+                        <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -375,7 +375,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10' >
+                        <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -387,7 +387,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide className='w-full  select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-20 sm:py-4 lg:py-10     ' >
+                        <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10     ' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
                                 <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
@@ -406,7 +406,7 @@ const Home = () => {
                 </div>
             </section>
             <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
-                <p className='text-[#8d8e9b] select-none text-[15px] sm:text-xs'>Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved</p>
+                <p className='text-[#8d8e9b]  select-none text-[12px] self-center sm:text-xs'>Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved</p>
                 <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
                     <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="16"></path>
