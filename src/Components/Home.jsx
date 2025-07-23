@@ -76,8 +76,16 @@ const Home = () => {
                     </motion.div>
                     <div
                         ref={mainContent} className="main-content text-white max-w-screen-xl px-12 md:px-28 relative z-10 lg:px-40 -translate-y-8  w-full pointer-events-none transition-opacity ease-in-out duration-100 delay-500">
-                        <h1 className=" text-white font-bold leading-tight text-[24px] sm:text-[40px] md:text-[50px] lg:text-[64px] font-spartan pointer-events-none ">Hafiz Abdullah Anwar</h1>
-                        <p className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</p>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}   // Start invisible and below
+                            animate={{ opacity: 1, y: 0 }}    // Animate to visible and original position
+                            transition={{ duration: 0.5, delay: 0.5 }}    // Duration in seconds
+                            className=" text-white font-bold leading-tight text-[24px] sm:text-[40px] md:text-[50px] lg:text-[64px] font-spartan pointer-events-none ">Hafiz Abdullah Anwar</motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 30 }}   // Start invisible and below
+                            animate={{ opacity: 1, y: 0 }}    // Animate to visible and original position
+                            transition={{ duration: 0.5, delay: 0.7 }}
+                            className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</motion.p>
                         <button
                             className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] active:scale-90    '
                             onClick={() => {
