@@ -17,7 +17,7 @@ export default function AnimateOnScroll({ children, className }) {
           sethasAnimated(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -27,9 +27,9 @@ export default function AnimateOnScroll({ children, className }) {
   return (
     <MotionDiv
       ref={ref}
-      initial={{ opacity: 0.5, x: -220 }}
-      animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0.8, x: 220 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      initial={{ opacity: 0.5, x: 120 }}
+      animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0.8, x: 120 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className={"flex justify-center items-center group relative z-30 "}
     >
       {children}

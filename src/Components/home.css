@@ -33,11 +33,11 @@
 
 @keyframes aboutAnimation {
     0%{
-        transform: translateY(30px);
         opacity: 0;
     }
-    50%{
-        transform: translateY(-20px);
+    60%{
+        opacity: 0;
+        transform: translateY(20px);
     }
     100%{
         opacity: 1;
@@ -47,7 +47,8 @@
 
 .about-btn{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    animation: aboutAnimation 01s ease-in-out ;
+    animation: aboutAnimation 1.5s ease-in-out ;
+    /* animation-delay: 0.5s; */
 }
 
 .about-btn::after{

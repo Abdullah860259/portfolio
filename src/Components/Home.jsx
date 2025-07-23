@@ -87,7 +87,7 @@ const Home = () => {
                             transition={{ duration: 0.5, delay: 0.7 }}
                             className="text-white font-bold italic font-['Merriweather'] text-[12px] sm:text-[18px] md:text-[16px] lg:text-[16px] mt-3 mb-8 pointer-events-none" >MERN Stack Developer</motion.p>
                         <button
-                            className='about-btn cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] active:scale-90    '
+                            className='about-btn  cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] active:scale-90    '
                             onClick={() => {
                                 setshowAboutMe(!showAboutMe),
                                     navAndDisc.current?.classList.toggle("navAndDiscHide")
