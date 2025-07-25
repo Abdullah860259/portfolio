@@ -66,6 +66,10 @@ const Home = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
     const sendEmail = (e) => {
+        setshowContact(false);
+        navAndDisc.current?.classList.toggle("navAndDiscHide");
+        mainContent.current?.classList.toggle("navAndDiscHide");
+        Linksref.current?.classList.toggle("navAndDiscHide");
         e.preventDefault();
 
         emailjs.send(
