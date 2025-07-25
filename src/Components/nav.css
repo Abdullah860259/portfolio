@@ -1,4 +1,4 @@
-/* .nav-links > li {
+.nav-links > li {
   position: relative;
   overflow: hidden;
   font-weight: bold;
@@ -21,7 +21,33 @@
 .nav-links > li:hover::before {
   transform: scaleX(1); 
   transform-origin:left;
-} */
+}
+
+.nav-links > div {
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+
+.nav-links > div::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  height: 2px;
+  width: 600%;
+  transform: scaleX(0);
+  background: linear-gradient(to right, white 80%, #1591b3 80%);
+  transition: transform 0.4s ease-in-out;
+  transform-origin:right;
+}
+
+
+.nav-links > div:hover::before {
+  transform: scaleX(1); 
+  transform-origin:left;
+}
 
 .nav-links > a {
   position: relative;

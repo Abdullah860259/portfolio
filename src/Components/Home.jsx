@@ -10,7 +10,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { EffectFlip } from 'swiper/modules';
 import 'swiper/css/effect-flip';
-import { AnimateToTopAtScroll } from './AnimateToTopAtScroll.jsx'
+import { AnimateToTopAtScroll } from './AnimateToTopAtScroll.jsx';
+import emailjs from 'emailjs-com';
 
 
 
@@ -24,6 +25,10 @@ const Home = () => {
     const [showNavColomn, setShowNavColomn] = useState(
         window.innerWidth < 658 // true or false initially
     );
+    const [showContact, setshowContact] = useState(false);
+    const [MailMessage, setMailMessage] = useState({
+
+    });
     useEffect(() => {
         if (window.innerWidth > 658) {
             const { render } = runMatter();
@@ -60,13 +65,46 @@ const Home = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+    const sendEmail = (e) => {
+        e.preventDefault();
 
+        emailjs.send(
+            'service_zga3vkb',
+            'template_g8szup3',
+            {
+                Name: MailMessage.Name,
+                Email: MailMessage.Email,
+                Message: MailMessage.Message,
+            },
+            'GaAJDlPNlZ00O5E_T'
+        ).then(
+            (result) => {
+                console.log('Success:', result.text);
+            },
+            (error) => {
+                console.error('Failed:', error.text);
+            }
+        );
+    }
+    function formInputHandler(e) {
+        setMailMessage({ ...MailMessage, [e.target.name]: e.target.value });
+        console.log(MailMessage)
+    }
     return (
         <>
             <AnimatePresence>
                 <header className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
-                    <Nav ref={navAndDisc} home={true} NavColomn={showNavColomn} />
+                    <Nav
+                        ref={navAndDisc}
+                        home={true}
+                        NavColomn={showNavColomn}
+                        showContact={() => {
+                            setshowContact(true)
+                            navAndDisc.current?.classList.toggle("navAndDiscHide")
+                            mainContent.current?.classList.toggle("navAndDiscHide")
+                            Linksref.current?.classList.toggle("navAndDiscHide")
+                        }} />
                     <motion.div
                         className='flex pointer-events-none justify-center items-center flex-col w-full h-auto absolute'
                         initial={{ opacity: 0, y: 50 }}   // Start invisible and below
@@ -128,7 +166,7 @@ const Home = () => {
                                     Linksref.current?.classList.toggle("navAndDiscHide");
                                 }}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
                                 ></line></svg>
                             </div>
                             <div className=" select-none discription relative md:w-[45%] md:h-full sm:h-auto  w-full  flex flex-col sm:items-left items-center gap-8 sm:gap-2  sm:justify-between justify-center ">
@@ -446,19 +484,90 @@ const Home = () => {
                     </li>
                 </ul>
             </footer>
+            <AnimatePresence>
+                {showContact && (
+                    <div className='absolute select-none pointer-events-auto top-0 right-0 bottom-0 left-0 w-full h-full z-50 sm:py-10 sm:px-16  flex  justify-between items-center' >
+                        <motion.div
+                            initial={{ y: "-100%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1 }}
+                            transition={{ duration: 0.4 }}
+                            exit={{ y: "100%", opacity: 0 }}
+                            className='w-1/2 h-full bg-[#fff] p-10 justify-center items-center hidden sm:flex '>
+                            <div className='flex-col flex mb-10 justify-start items-start gap-4'>
+                                <h1 className='text-4xl font-bold'>Let’s Connect</h1>
+                                <p>
+                                    I’m always <span className='font-bold text-[#238794]'>open</span> to new opportunities, collaborations, or just a good conversation.Whether you have a project in mind, a question, or just want to say hello -
+                                    <span className='font-bold text-[#238794]'> Feel free to reach out!</span>
+                                </p>
+                                <p className='font-bold'>📞 Phone: +92 310 1733247 (Fast Response through Whatsapp)</p>
+                                <p className='font-bold'>📧 Email: abdullah860259@email.com</p>
+                                <p className='font-bold'>📱 Available for: Freelance, Internships, Project Work</p>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1 }}
+                            transition={{ duration: 0.4, delay: 0.15 }}
+                            exit={{ y: "-100%", opacity: 0 }}
+                            className='sm:w-1/2 w-full h-full  bg-[#22c1d6]'>
+                            <div className='w-full pointer-events-auto  p-5 flex justify-end items-center ' >
+                                <svg
+                                    onClick={() => {
+                                        setshowContact(!showContact);
+                                        navAndDisc.current?.classList.toggle("navAndDiscHide");
+                                        mainContent.current?.classList.toggle("navAndDiscHide");
+                                        Linksref.current?.classList.toggle("navAndDiscHide");
+                                    }}
+                                    className='cursor-pointer pointer-events-auto duration-150 hover:scale-125 active:scale-90 transition ease-in-out' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </div>
+                            <div className='flex-col flex sm:hidden p-10 justify-start items-start gap-4'>
+                                <h1 className='text-4xl font-bold'>Let’s Connect</h1>
+                                <p>
+                                    I’m always <span className='font-bold text-[#238794]'>open</span> to new opportunities, collaborations, or just a good conversation.Whether you have a project in mind, a question, or just want to say hello -
+                                    <span className='font-bold text-[#238794]'> Feel free to reach out!</span>
+                                </p>
+                                <p className='font-bold'>📞 Phone: +92 310 1733247 (Fast Response through Whatsapp)</p>
+                                <p className='font-bold'>📧 Email: abdullah860259@email.com</p>
+                                <p className='font-bold'>📱 Available for: Freelance, Internships,Project Work</p>
+                            </div>
+                            <div className='w-full h-auto p-10 flex flex-col justify-center items-start gap-1'>
+                                <div className='w-full' >
+                                    <p className='font-semibold ' >Name*</p>
+                                    <input
+                                        onChange={(e) => formInputHandler(e)}
+                                        className=' outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 w-full' type="text" name='Name' />
+                                </div>
+                                <div className='w-full' >
+                                    <p className='font-semibold ' >Email*</p>
+                                    <input
+                                        onChange={(e) => formInputHandler(e)}
+                                        className=' outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 w-full' type="email" name='Email' />
+                                </div>
+                                <div className='w-full' >
+                                    <p className='font-semibold ' >Message*</p>
+                                    <textarea
+                                        onChange={(e) => formInputHandler(e)}
+                                        className="w-full  h-20 outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 border-white " rows="6" cols="50" name='Message' />
+                                </div>
 
-            {
-                showTopper && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
-                    </motion.div>
-                )
-            }
+                                <button
+                                    onClick={sendEmail}
+                                    className='w-full border-2 p-2 border-[#0d161a] text-[#0d161a] hover:bg-[#0d161a] hover:text-[#fff] hover:scale-110  transition ease-in-out duration-200 active:scale-90'>Submit</button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+            {showTopper && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
+                </motion.div>
+            )}
         </>
     )
 }
