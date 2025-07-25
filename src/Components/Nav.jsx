@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { IoClose } from "react-icons/io5";
-import { GrLinkedinOption } from 'react-icons/gr';
 import "./nav.css"
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from "framer-motion";
@@ -103,7 +102,7 @@ export const Nav = React.forwardRef((props, ref) => {
                     document.body.style.overflow = '';
                   }}
                 >Home</Link> </li>
-                <li className='w-full' ><Link to="/profile" className="  p-5 rounded-sm block active:scale-90 w-full transition active:bg-[#1784ab] hover:cursor-pointer hover:text-white  duration-200 hover:scale-105 " >Profile</Link> </li>
+                <li className='w-full' ><Link to="/profile" className="  p-5 rounded-sm block active:scale-90 w-full transition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white  duration-200 hover:scale-105 " >Profile</Link> </li>
                 <li className='w-full' ><Link to="/services" className=" p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105" >Services</Link> </li>
                 <li className='w-full' ><Link to="/contact" className="  p-5 rounded-sm block active:scale-90 w-full transition active:bg-[#1784ab] hover:cursor-pointer hover:text-white  duration-200 hover:scale-105" >Contact</Link> </li>
                 <div className='w-full p-5 flex justify-between items-center'> 
