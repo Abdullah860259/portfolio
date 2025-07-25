@@ -25,7 +25,7 @@ export const Nav = React.forwardRef((props, ref) => {
               <motion.li
                 whileTap={{ scale: 0.8 }}
                 transition={{ duration: 0.05 }}
-                className="hover:cursor-pointer hover:text-white overflow-visible transition-colors duration-200 hover:scale-105"
+                className="hover:cursor-pointer hover:text-white w-full h-full overflow-visible transition-colors duration-200 hover:scale-105"
               >
                 Profile
               </motion.li>

@@ -34,12 +34,12 @@
   content: '';
   position: absolute;
   bottom: 10px;
-  left: 0;
+  right: 0;
   height: 2px;
-  width: 100%;
+  width: 600%;
   transform: scaleX(0);
-  background: linear-gradient(to right, #1591b3 35%, white 35%);
-  transition: transform 0.3s ease-in-out;
+  background: linear-gradient(to right, white 80%, #1591b3 80%);
+  transition: transform 0.4s ease-in-out;
   transform-origin:right;
 }
 
