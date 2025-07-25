@@ -125,7 +125,7 @@ const Profile = () => {
                                         />
                                         <RxCross2
                                             size={24}
-                                            className="text-black absolute top-5 right-5 cursor-pointer border border-white rounded-full bg-white"
+                                            className="text-black absolute top-2 right-2 cursor-pointer border border-white rounded-full bg-white"
                                             onClick={() => {
                                                 setShowNav(true)
                                                 setshowProof(false)
