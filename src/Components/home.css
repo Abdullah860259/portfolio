@@ -15,7 +15,8 @@
         width: 300px;
         height: 300px
     }
-    .skills > li{
+
+    .skills>li {
         padding: 4px 5px;
         font-size: 11px;
     }
@@ -26,32 +27,45 @@
     .bg-logo {
         width: 200px;
         height: 200px;
-        transform: translateY(-65px);   
+        transform: translateY(-65px);
     }
-    
+
 }
 
+@keyframes spin-slow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 @keyframes aboutAnimation {
-    0%{
+    0% {
         opacity: 0;
     }
-    60%{
+
+    60% {
         opacity: 0;
         transform: translateY(20px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateY(0px);
     }
 }
 
-.about-btn{
+.about-btn {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    animation: aboutAnimation 1.5s ease-in-out ;
+    animation: aboutAnimation 1.5s ease-in-out;
     /* animation-delay: 0.5s; */
 }
 
-.about-btn::after{
+.about-btn::after {
     content: '';
     background-image: url(/right-arrow.svg);
     background-size: contain;
@@ -71,17 +85,18 @@
 }
 
 @media (max-width: 640px) {
-  .about-btn::after {
-    content: none; /* hides the arrow */
-    display: none;
-  }
+    .about-btn::after {
+        content: none;
+        /* hides the arrow */
+        display: none;
+    }
 }
 
-.latestprojects-btn{
+.latestprojects-btn {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-.latestprojects-btn::after{
+.latestprojects-btn::after {
     content: '';
     background-image: url(/right-arrow.svg);
     background-size: contain;
@@ -98,18 +113,19 @@
 }
 
 .latestprojects-btn:hover::after {
-    top:40px
+    top: 40px
 }
 
 @media (max-width: 640px) {
-  .latestprojects-btn::after {
-    content: none; /* hides the arrow */
-    display: none;
-  }
+    .latestprojects-btn::after {
+        content: none;
+        /* hides the arrow */
+        display: none;
+    }
 }
 
 
-.skills > li{
+.skills>li {
     border: 1px solid #ffffff52;
     padding: 5px 10px;
     margin: 5px;
@@ -117,23 +133,23 @@
     font-size: 14px;
 }
 
-.show{
+.show {
     scale: 1;
     opacity: 1;
     transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
 
-.hide{
+.hide {
     scale: 0.25;
     opacity: 0;
     transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
 
-.MERNStack > div{
+.MERNStack>div {
     transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
 }
 
-.MERNStack > div:hover {
+.MERNStack>div:hover {
     cursor: pointer;
     scale: 1.15;
     transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
@@ -142,7 +158,7 @@
     padding: 20px 0px;
 }
 
-.MERNStack > div::after{
+.MERNStack>div::after {
     text-align: center;
     width: 140px;
     height: 40px;
@@ -156,38 +172,38 @@
     pointer-events: none;
 }
 
-.MERNStack > div:nth-child(1)::after {
+.MERNStack>div:nth-child(1)::after {
     content: 'MongoDB';
     background-color: #47a248;
 }
 
-.MERNStack > div:nth-child(2)::after {
+.MERNStack>div:nth-child(2)::after {
     content: 'Express';
     background-color: #ffffff;
     color: black;
 }
 
-.MERNStack > div:nth-child(3)::after {
+.MERNStack>div:nth-child(3)::after {
     content: 'React';
     background-color: #61DBFB;
     color: black;
 }
 
-.MERNStack > div:nth-child(4)::after {
+.MERNStack>div:nth-child(4)::after {
     content: 'Node.js';
     background-color: #3C873A;
 }
 
-.MERNStack > div:hover::after{
+.MERNStack>div:hover::after {
     top: -60%;
     transition: top 0.15s ease-in-out;
 }
 
 
-.navAndDiscHide{
+.navAndDiscHide {
     opacity: 0;
 }
 
 .editor:hover::before {
-  transform: translate(-50%, -50%) scale(1.6);
+    transform: translate(-50%, -50%) scale(1.6);
 }

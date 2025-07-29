@@ -12,6 +12,8 @@ import { EffectFlip } from 'swiper/modules';
 import 'swiper/css/effect-flip';
 import { AnimateToTopAtScroll } from './AnimateToTopAtScroll.jsx';
 import emailjs from 'emailjs-com';
+import Error from './Error.jsx'
+import Success from './Success.jsx'
 
 
 
@@ -20,12 +22,16 @@ const Home = () => {
     const mainContent = useRef(null);
     const Linksref = useRef(null);
     const latestworkref = useRef(null);
+    const ContactButton = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
     const [showTopper, setshowTopper] = useState(false);
     const [showNavColomn, setShowNavColomn] = useState(
         window.innerWidth < 658 // true or false initially
     );
     const [showContact, setshowContact] = useState(false);
+    const [showLoading, setshowLoading] = useState(false);
+    const [showError, setshowError] = useState(false);
+    const [showSuccess, setshowSuccess] = useState(false);
     const [MailMessage, setMailMessage] = useState({
 
     });
@@ -66,29 +72,46 @@ const Home = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
     const sendEmail = (e) => {
-        setshowContact(false);
-        navAndDisc.current?.classList.toggle("navAndDiscHide");
-        mainContent.current?.classList.toggle("navAndDiscHide");
-        Linksref.current?.classList.toggle("navAndDiscHide");
-        e.preventDefault();
-
-        emailjs.send(
-            'service_zga3vkb',
-            'template_g8szup3',
-            {
-                Name: MailMessage.Name,
-                Email: MailMessage.Email,
-                Message: MailMessage.Message,
-            },
-            'GaAJDlPNlZ00O5E_T'
-        ).then(
-            (result) => {
-                console.log('Success:', result.text);
-            },
-            (error) => {
-                console.error('Failed:', error.text);
+        if (!showLoading) {
+            if (MailMessage.Name === undefined || MailMessage.Email === undefined || MailMessage.Message === undefined) {
+                setshowError(true);
+                if (ContactButton.current) {
+                    ContactButton.current.innerText = "Fill All Details First";
+                }
+                setshowLoading(false);
+                const time = setTimeout(() => {
+                    ContactButton.current.innerText = "Submit";
+                }, 2000);
+                return () => clearTimeout(time);
             }
-        );
+            setshowLoading(true);
+            navAndDisc.current?.classList.toggle("navAndDiscHide");
+            mainContent.current?.classList.toggle("navAndDiscHide");
+            Linksref.current?.classList.toggle("navAndDiscHide");
+            e.preventDefault();
+
+            emailjs.send(
+                'service_zga3vkb',
+                'template_g8szup3',
+                {
+                    Name: MailMessage.Name,
+                    Email: MailMessage.Email,
+                    Message: MailMessage.Message,
+                },
+                'GaAJDlPNlZ00O5E_T'
+            ).then(
+                (result) => {
+                    setshowLoading(false);
+                    setshowContact(false);
+                    setshowSuccess(true);
+                    console.log('Success:', result.text);
+                },
+                (error) => {
+                    setshowError(true);
+                    console.error('Failed:', error.text);
+                }
+            );
+        }
     }
     function formInputHandler(e) {
         setMailMessage({ ...MailMessage, [e.target.name]: e.target.value });
@@ -161,8 +184,9 @@ const Home = () => {
                         animate={{ scale: 1 }}
                         exit={{ scale: 0 }}
                         className='absolute top-0 left-0 w-full inset-0 h-full z-20 flex justify-center items-center px-2 md:px-6 overflow-y-hidden'>
-                        <div className="about-me shadow-xl shadow-[#ffffff4b]  rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
-                            <div className=' absolute top-2 right-2 z-30 cursor-pointer'
+                        <div className="about-me shadow-[0_4px_10px_rgba(255,255,255,0.3)]
+  rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
+                            <div className=' absolute hover:scale-110 transition-scale duration-100 ease-in-out active:scale-90 hover:opacity-85 top-2 right-2 z-30 cursor-pointer'
                                 onClick={() => {
                                     setshowAboutMe(!showAboutMe);
                                     navAndDisc.current?.classList.toggle("navAndDiscHide");
@@ -514,7 +538,7 @@ const Home = () => {
                             transition={{ duration: 0.4, delay: 0.15 }}
                             exit={{ y: "-100%", opacity: 0 }}
                             className='sm:w-1/2 w-full h-full  bg-[#22c1d6]'>
-                            <div className='w-full pointer-events-auto  p-5 flex justify-end items-center ' >
+                            <div className='w-full pointer-events-auto p-2 sm:p-5 flex justify-end items-center ' >
                                 <svg
                                     onClick={() => {
                                         setshowContact(!showContact);
@@ -524,15 +548,15 @@ const Home = () => {
                                     }}
                                     className='cursor-pointer pointer-events-auto duration-150 hover:scale-125 active:scale-90 transition ease-in-out' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                             </div>
-                            <div className='flex-col flex sm:hidden p-10 justify-start items-start gap-4'>
-                                <h1 className='text-4xl font-bold'>Let’s Connect</h1>
-                                <p>
-                                    I’m always <span className='font-bold text-[#238794]'>open</span> to new opportunities, collaborations, or just a good conversation.Whether you have a project in mind, a question, or just want to say hello -
+                            <div className='flex-col flex sm:hidden p-4 sm:p-10 justify-start items-start gap-2 sm:gap-4'>
+                                <h1 className='lg:text-4xl sm:text-2xl text-xl font-bold'>Let’s Connect</h1>
+                                <p className='text-[12px] sm:text-[16px]'>
+                                    I’m always <span className='font-bold text-[8px] sm:text-[16px] text-[#238794]'>open</span> to new opportunities, collaborations, or just a good conversation.Whether you have a project in mind, a question, or just want to say hello -
                                     <span className='font-bold text-[#238794]'> Feel free to reach out!</span>
                                 </p>
-                                <p className='font-bold'>📞 Phone: +92 310 1733247 (Fast Response through Whatsapp)</p>
-                                <p className='font-bold'>📧 Email: abdullah860259@email.com</p>
-                                <p className='font-bold'>📱 Available for: Freelance, Internships,Project Work</p>
+                                <p className='font-bold text-[12px] sm:text-[16px] '>📞 Phone: +92 310 1733247 (Fast Response through Whatsapp)</p>
+                                <p className='font-bold text-[12px] sm:text-[16px] '>📧 Email: abdullah860259@email.com</p>
+                                <p className='font-bold text-[12px] sm:text-[16px] '>📱 Available for: Freelance, Internships,Project Work</p>
                             </div>
                             <div className='w-full h-auto p-10 flex flex-col justify-center items-start gap-1'>
                                 <div className='w-full' >
@@ -556,12 +580,32 @@ const Home = () => {
 
                                 <button
                                     onClick={sendEmail}
-                                    className='w-full border-2 p-2 border-[#0d161a] text-[#0d161a] hover:bg-[#0d161a] hover:text-[#fff] hover:scale-110  transition ease-in-out duration-200 active:scale-90'>Submit</button>
+                                    ref={ContactButton}
+                                    disabled={showLoading}
+                                    className='w-full border-2 p-2  border-[#0d161a] text-[#0d161a] hover:bg-[#0d161a] hover:text-[#fff] hover:scale-110  transition ease-in-out duration-200 active:scale-90 relative '>Submit
+                                    {showLoading && (
+                                        <div className='absolute flex justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#fff]'>
+                                            <div className=" w-8 h-8 border-4 border-t-4 border-t-[#0d161a] border-[#b1b1b1] rounded-full rotate-180 transition-all duration-500 ease-in-out animate-[spin-slow_1s_linear_infinite] "></div>
+                                        </div>
+                                    )}
+                                </button>
                             </div>
                         </motion.div>
                     </div>
                 )}
             </AnimatePresence>
+            {showError && (
+                <Error
+                    decs="Something went wrong!"
+                    onClose={() => setshowError(false)}
+                />
+            )}
+            {showSuccess && (
+                <Success
+                    onClose={() => setshowSuccess(false)}
+                    decs="Message sent successfully!"
+                />
+            )}
             {showTopper && (
                 <motion.div
                     initial={{ opacity: 0 }}

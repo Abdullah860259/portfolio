@@ -41,20 +41,17 @@ export const Nav = React.forwardRef((props, ref) => {
               </motion.li>
             </Link>
           )}
+          {props.home ? (
 
-          <div className='overflow-visible' href="/services">
-            <motion.li
-              whileTap={{ scale: 0.8 }}
-              transition={{ duration: 0.05 }}
-              className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Services</motion.li></div>
-          <div>
-            <motion.li
-              whileTap={{ scale: 0.8 }}
-              transition={{ duration: 0.05 }}
-              onClick={() => {
-                props.showContact();
-              }}
-              className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Contact</motion.li></div>
+            <div>
+              <motion.li
+                whileTap={{ scale: 0.8 }}
+                transition={{ duration: 0.05 }}
+                onClick={() => {
+                  props.showContact();
+                }}
+                className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Contact</motion.li></div>
+          ) : null}
         </ul>
         {!props.NavColomn ? (
           <div className='flex justify-center items-center gap-4' >
@@ -106,14 +103,14 @@ export const Nav = React.forwardRef((props, ref) => {
                   }}
                 >Home</Link> </li>
                 <li className='w-full' ><Link to="/profile" className="  p-5 rounded-sm block active:scale-90 w-full transition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white  duration-200 hover:scale-105 " >Profile</Link> </li>
-                <li className='w-full' ><Link to="/services" className=" p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105" >Services</Link> </li>
-                <li
-                  onClick={() => {
-                    console.log(props)
-                    props.showContact();
-                    setshowColomn(false);
-                  }}
-                  className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >Contact </li>
+                {props.home ? (
+                  <li
+                    onClick={() => {
+                      props.showContact();
+                      setshowColomn(false);
+                    }}
+                    className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >Contact </li>
+                ) : null}
                 <div className='w-full p-5 flex justify-between items-center'>
                   <div className='flex justify-center items-center gap-4' >
                     <a href="https://wa.me/923101733247?text=Hello%2C%20I'm%20interested%20in%20your%20services%21
