@@ -287,6 +287,43 @@ const Home = () => {
                     <h1
                         className='text-2xl md:text-4xl font-bold select-none name bg-white z-10  text-[#177f95] p-3 border-b-2 border-t-2 border-l-2 border-r-2 rounded-lg border-[#177f95] relative' >Latest Works</h1>
                 </div>
+                <div className='after:contents-[""] relative after:absolute after:hidden after:sm:block after:w-[40%] after:h-[2px] after:bg-[#7f9ac8]  after:top-[50%] after:right-[10%]  '>
+                    <a href="https://projectabdullah.netlify.app" target="_blank" rel="noopener noreferrer">
+                        <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#7f9ac8] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
+                    </a>
+                    <div className="project w-full max-w-screen-xl xl:py-40  overflow-hidden flex justify-center items-center py-4 px-2  ">
+                        <div className="project w-full   h-[100dvh] sm:h-auto  py-10 px-5 sm:px-0 gap-10 flex sm:flex-row-reverse flex-col justify-center items-center content-center sm:justify-between sm:items-center">
+                            <AnimateOnScrollReverse>
+                                <a href="https://www.dropbox.com/scl/fi/tk66az01esnkksnm20421/prayer-scheduler-Setup-1.0.0.exe?rlkey=s59spwaf1b9jm737yz7mk95xj&st=j2bc4vbb&dl=0" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
+                                    <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/PrayerApp.webp" alt="Project 1" />
+                                </a>
+                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#7f9ac8] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#7f9ac8] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                    Prayer App
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </span>
+                            </AnimateOnScrollReverse>
+                            <AnimateToTopAtScroll className={'text-black w-full   sm:w-[45%] h-auto flex flex-col justify-items-start gap-6 sm:gap-4 sm:pl-12'}>
+                                <h2 className='text-2xl  md:text-3xl font-bold select-none name  text-[#7f9ac8]' >Prayer Scheduler</h2>
+                                <p className='text-[16px] md:text-xl select-none name  text-[#7f9ac8]' >{"(Prayer App)"}</p>
+                                <p className='text-[14px]'>A smart desktop app that auto-shuts down your PC at prayer times.
+                                    Built with Electron.js, it runs in the background, respects your schedule, and helps you stay focused on Salah.
+
+                                    Simple. Purposeful. Distraction-free. 
+                                    <span className='font-bold' >You can download the setup of that application in PC by clicking on the image or on the dot button. </span>
+                                    </p>
+                                <ul className='flex row flex-wrap gap-2 text-[12px] md:text-sm select-none' >
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >#Electron JS</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >Node JS</li>
+                                    <li className='px-2 py-2 border-[1px] border-[#0000007c] rounded-2xl ' >Javascript</li>
+                                </ul>
+                            </AnimateToTopAtScroll>
+                        </div>
+                    </div>
+                </div>
                 <div className='after:contents-[""] after:hidden after:sm:block relative after:absolute after:w-[40%] after:h-[2px]  after:bg-[#6f11b0]  after:top-[50%] after:left-[10%]  '>
                     <a href="https://todoabdullah.vercel.app" target="_blank" rel="noopener noreferrer">
                         <div className="before hidden sm:block absolute  w-[18px] h-[18px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ffffff] border-[3px] border-[#6f11b0] rounded-full z-10 hover:scale-125 cursor-pointer transition duration-100 ease-in "></div>
