@@ -32,9 +32,8 @@ const Home = () => {
     const [showLoading, setshowLoading] = useState(false);
     const [showError, setshowError] = useState(false);
     const [showSuccess, setshowSuccess] = useState(false);
-    const [MailMessage, setMailMessage] = useState({
-
-    });
+    const [MailMessage, setMailMessage] = useState({});
+    const [showColomn, setshowColomn] = useState(false);
     useEffect(() => {
         if (window.innerWidth > 658) {
             const { render } = runMatter();
@@ -120,12 +119,16 @@ const Home = () => {
     return (
         <>
             <AnimatePresence>
-                <header className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
+                <header 
+                onClick={()=> showColomn? setshowColomn(false):null}
+                className=" relative  flex justify-center items-center flex-col landing-page h-[100dvh] w-full overflow-auto bg-[#111111]  ">
                     <div id="myCanvasContainer" className='hidden sm:block absolute inset-0 w-full h-full z-0 overflow-hidden'></div>
                     <Nav
                         ref={navAndDisc}
                         home={true}
                         NavColomn={showNavColomn}
+                        showColomn={showColomn}
+                        setshowColomn={setshowColomn}
                         showContact={() => {
                             setshowContact(true)
                             navAndDisc.current?.classList.toggle("navAndDiscHide")

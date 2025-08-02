@@ -4,7 +4,10 @@ import "./nav.css"
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from "framer-motion";
 export const Nav = React.forwardRef((props, ref) => {
-  const [showColomn, setshowColomn] = useState(false);
+  console.log(props)
+  let showColomn = props.showColomn;
+  let setshowColomn = props.setshowColomn;
+  // const [showColomn, setshowColomn] = useState(false);
   useEffect(() => {
     document.body.style.overflow = 'hidden'; // disable scroll on mount
     return () => {
