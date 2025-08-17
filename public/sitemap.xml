@@ -5,6 +5,7 @@
   <url>
     <loc>https://hafizabdullahanwar.vercel.app/</loc>
     <lastmod>2025-08-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
@@ -12,6 +13,7 @@
   <url>
     <loc>https://hafizabdullahanwar.vercel.app/about</loc>
     <lastmod>2025-08-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -19,6 +21,7 @@
   <url>
     <loc>https://hafizabdullahanwar.vercel.app/projects</loc>
     <lastmod>2025-08-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -26,6 +29,7 @@
   <url>
     <loc>https://hafizabdullahanwar.vercel.app/contact</loc>
     <lastmod>2025-08-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
