@@ -26,10 +26,10 @@ useEffect(() => {
         transition={{ 
             duration: 0.8, 
             ease: "easeOut", 
-            delay: 0.25,
+            delay: 0.2,
             type: "spring", 
             visualDuration: 0.4, 
-            bounce: 0.6
+            bounce: 0.5
         }}
         >
             {children}

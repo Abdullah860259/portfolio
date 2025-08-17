@@ -24,17 +24,17 @@ export default function AnimateOnScroll({ children, className }) {
   return (
     <MotionDiv
       ref={ref}
+      className={`flex justify-center items-center group relative z-30 `}
       initial={{ opacity: 0, x: 120 }}
       animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: 120 }}
       transition={{
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.35,
+        delay: 0.25,
         type: "spring",
         visualDuration: 0.4,
-        bounce: 0.7
+        bounce: 0.5
       }}
-      className={"flex justify-center items-center group relative z-30 "}
     >
       {children}
     </MotionDiv>

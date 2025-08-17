@@ -29,10 +29,10 @@ export default function AnimateOnScroll({ children, className }) {
       transition={{
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.35,
+        delay: 0.2,
         type: "spring",
         visualDuration: 0.4,
-        bounce: 0.7
+        bounce: 0.5
       }}
       className={"flex justify-center items-center group relative z-30 "}
     >
