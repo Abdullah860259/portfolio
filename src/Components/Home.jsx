@@ -560,7 +560,9 @@ const Home = () => {
                 </div>
             </section>
             <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
-                <p className='text-[#8d8e9b]  select-none text-[12px] self-center sm:text-xs'>Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved</p>
+                <p className='text-gray-700 select-none text-[12px] self-center sm:text-xs'>
+                    Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved
+                </p>
                 <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
                     <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="16"></path>
