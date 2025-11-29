@@ -7,7 +7,6 @@ export const Nav = React.forwardRef((props, ref) => {
   console.log(props)
   let showColomn = props.showColomn;
   let setshowColomn = props.setshowColomn;
-  // const [showColomn, setshowColomn] = useState(false);
   useEffect(() => {
     document.body.style.overflow = 'hidden'; // disable scroll on mount
     return () => {
@@ -28,7 +27,7 @@ export const Nav = React.forwardRef((props, ref) => {
               <motion.li
                 whileTap={{ scale: 0.8 }}
                 transition={{ duration: 0.05 }}
-                className="hover:cursor-pointer hover:text-white w-full h-full overflow-visible transition-colors duration-200 hover:scale-105"
+                className="hover:cursor-pointer pt-3 pl-3 pr-3  hover:text-white w-full h-full overflow-visible transition-colors duration-200 hover:scale-105"
               >
                 Profile
               </motion.li>
@@ -38,7 +37,7 @@ export const Nav = React.forwardRef((props, ref) => {
               <motion.li
                 whileTap={{ scale: 0.8 }}
                 transition={{ duration: 0.05 }}
-                className="hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105"
+                className="hover:cursor-pointer pt-3 pl-3 pr-3  hover:text-white transition-colors duration-200 hover:scale-105"
               >
                 Back to Home
               </motion.li>
@@ -53,7 +52,18 @@ export const Nav = React.forwardRef((props, ref) => {
                 onClick={() => {
                   props.showContact();
                 }}
-                className='hover:cursor-pointer hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Contact</motion.li></div>
+                className='hover:cursor-pointer pt-3 pl-3 pr-3  hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >Contact</motion.li></div>
+          ) : null}
+          {props.home ? (
+
+            <div>
+              <Link to={"/net-experience"} >
+                <motion.li
+                  whileTap={{ scale: 0.8 }}
+                  transition={{ duration: 0.05 }}
+                  className='hover:cursor-pointer pt-3 pl-3 pr-3  hover:text-white transition-colors duration-200 hover:scale-105 transition-scale   ' >NET Experience</motion.li>
+              </Link>
+            </div>
           ) : null}
         </ul>
         {!props.NavColomn ? (
@@ -114,6 +124,17 @@ export const Nav = React.forwardRef((props, ref) => {
                       setshowColomn(false);
                     }}
                     className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >Contact </li>
+                ) : null}
+                {props.home ? (
+                  <li
+                    onClick={() => {
+
+                      setshowColomn(false);
+                    }}
+                    className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >
+                      <Link to={"/net-experience"} >
+                        NET Experience
+                      </Link> </li>
                 ) : null}
                 <div className='w-full p-5 flex justify-between items-center'>
                   <div className='flex justify-center items-center gap-4' >

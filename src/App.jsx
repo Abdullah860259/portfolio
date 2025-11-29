@@ -6,6 +6,7 @@ import './index.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import NetExperience from './Components/NetExperience';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/net-experience" element={<NetExperience />} />
                 </Routes>
             </div>
         </>
