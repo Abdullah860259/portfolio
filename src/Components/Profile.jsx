@@ -60,7 +60,7 @@ const Profile = () => {
                                 transition={{ duration: 0.5 }}
                                 className="relative img-Cont w-[225px] h-[225px] rounded-full z-10 flex   overflow-hidden justify-center items-center">
                                 <img
-                                    src="/DPjpg.jpg"
+                                    src="/My db.webp"
                                     alt="Profile"
                                     className="w-[200px] h-[200px] rounded-full object-cover"
                                 />

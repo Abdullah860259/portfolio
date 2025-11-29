@@ -14,6 +14,7 @@ import { AnimateToTopAtScroll } from './AnimateToTopAtScroll.jsx';
 import emailjs from 'emailjs-com';
 import Error from './Error.jsx'
 import Success from './Success.jsx'
+import { EffectCoverflow } from 'swiper/modules';
 
 
 
@@ -509,46 +510,63 @@ const Home = () => {
                     </div>
                     <Swiper
                         className='sm:w-[calc(100%-150px)] w-full w-min-[300px] h-auto shadow-lg shadow-[#00000023] '
-                        modules={[Navigation, Pagination, EffectFlip]}
+                        modules={[Navigation, Pagination, EffectCoverflow]}
                         navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
                         pagination={{ clickable: true }}
                         spaceBetween={50}
                         slidesPerView={1}
-                        effect="flip" // ✅
+                        effect="coverflow" // ✅
                     // cubeEffect={{ shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }}
                     >
-                        <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10' >
+                        <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-2 sm:px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
-                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/sirahsannaveed.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <p>Abdullah built my portfolio with great professionalism and skill. He understood my needs quickly, offered smart design suggestions, and delivered a clean, responsive website on time.</p>
                                     <div className='flex w-full  flex-col justify-center items-end'>
-                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
-                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                        <p className='font-bold text-[#177f95] text-2xl' >Ahsan Naveed, Lecturer</p>
+                                        <a
+                                            href="mailto:ahsan.qau@gmail.com"
+                                            className="font-thin text-sm underline"
+                                        >
+                                            ahsan.qau@gmail.com
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
-                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/Mamo Tanveer.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <p>Abdullah did a great job on our project. He understood our requirements quickly, worked efficiently, and delivered results beyond our expectations. Highly recommended!</p>
                                     <div className='flex w-full  flex-col justify-center items-end'>
-                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
-                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                        <p className='font-bold text-[#177f95] text-xl' >Tanveer Atiq, Dental Technition</p>
+                                        <a
+                                            href="mailto:tanveer.atiq127@gmail.com"
+                                            className="font-thin text-sm underline"
+                                        >
+                                            tanveer.atiq127@gmail.com
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide className='w-full py-10 select-none h-auto border-[1px]  rounded-xl flex justify-center items-center flex-row px-4 sm:px-20 sm:py-4 lg:py-10     ' >
                             <div className='flex flex-col md:flex-row justify-center items-center gap-8' >
-                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/gautham.webp" alt="Client 1" />
+                                <img className='w-[190px] inline shrink-0 shadow-lg shadow-[#00000075] h-[190px] rounded-full' src="/sirarsalan.webp" alt="Client 1" />
                                 <div className='flex sm:pt-10 flex-col justify-center items-center gap-4' >
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis assumenda, corrupti totam beatae qui reprehenderit! Perspiciatis, inventore! Aut cumque mollitia ipsum atque.</p>
+                                    <p>Abdullah is a dedicated and professional web developer. His communication, discipline, and problem-solving approach made the entire process easy and stress-free. I truly appreciate his work ethic and highly recommend him.</p>
                                     <div className='flex w-full  flex-col justify-center items-end'>
-                                        <p className='font-bold text-[#177f95] text-2xl' >Lorem, ipsum dolor.</p>
-                                        <p className='font-bold text-[#177f95] ' >Designer</p>
+                                        <p className='font-bold text-[#177f95] text-2xl' >Arsalan Alam, Engineer</p>
+                                        <a
+                                            href="mailto:Engineer.arslanalam786@gmail.com"
+                                            className="font-thin text-sm underline"
+                                        >
+                                            Engineer.arslanalam786@gmail.com
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -561,7 +579,7 @@ const Home = () => {
             </section>
             <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
                 <p className='text-gray-700 select-none text-[12px] self-center sm:text-xs'>
-                    Hafiz Abdullah Anwar | Copyright &copy; 2023 | All Rights Reserved
+                    Hafiz Abdullah Anwar | Copyright &copy; 2025 | All Rights Reserved
                 </p>
                 <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
                     <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
