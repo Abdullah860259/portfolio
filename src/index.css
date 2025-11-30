@@ -2,15 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* index.css */
 
-
-::-webkit-scrollbar{
-    width: 10px;
+:root {
+  --vh: 100%;
 }
 
-::-webkit-scrollbar-thumb{
-    background-image: linear-gradient(to top, #00c3ff, #13657c);
-    border-radius: 10px;
+@media (max-width: 768px) {
+  /* JS will update --vh on mobile dynamically */
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to top, #00c3ff, #13657c);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

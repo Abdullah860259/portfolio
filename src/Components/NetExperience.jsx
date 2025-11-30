@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Nav } from "./Nav";
 
 const Play = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -32,6 +33,9 @@ const recordings = [
 ];
 
 export default function NetExperience() {
+  const [ShowNav, setShowNav] = useState(
+    window.innerWidth > 658 // true or false initially
+  );
   const [activeId, setActiveId] = useState(null);
   const audioRefs = useRef({});
 
@@ -53,48 +57,89 @@ export default function NetExperience() {
     }
   };
 
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    // Force repaint after small delay
+    setTimeout(() => {
+      setVh();
+    }, 100);
+
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowNav(window.innerWidth > 658);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="h-screen select-none bg-black text-blue-400 p-6">
-      <motion.h1
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="text-3xl font-bold mb-16 text-center"
-      >
-        NET Exam Experience
-      </motion.h1>
+    <div className="bg-[#111111]  overflow-auto" style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }} >
+      <Nav home={false} ShowNav={ShowNav} />
+      <div className="select-none pt-24 sm:pt-28 text-blue-400 p-6">
+        <motion.h1
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className=" text-2xl sm:text-3xl font-bold mb-6 sm:mb-16 text-center"
+        >
+          NET Exam Experience
+        </motion.h1>
 
-      <div className="grid bg-[#0d0d0d] border border-blue-700 rounded-2xl p-6 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {recordings.map((item) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="bg-[#0d0d0d] h-full border border-blue-700 shadow-lg rounded-2xl p-5">
-              <h2 className="text-xl font-semibold mb-4 text-blue-300">{item.question}</h2>
+        <div className="grid bg-[#0d0d0d] border border-blue-700 rounded-2xl p-3 sm:p-6 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+          {recordings.map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="bg-[#0d0d0d] border border-blue-700 shadow-lg rounded-2xl p-3 sm:p-5">
+                <h2 className="sm:text-xl font-semibold mb-4 text-blue-300">{item.question}</h2>
 
-              <audio
-                controls
-                className="w-full mt-2"
-                ref={(el) => (audioRefs.current[item.id] = el)}
-                onPause={() => activeId === item.id && setActiveId(null)}
-              >
-                <source src={item.audio} type="audio/mp3" />
-              </audio>
+                <audio
+                  controls
+                  className="w-full mt-2"
+                  ref={(el) => (audioRefs.current[item.id] = el)}
+                  onPause={() => activeId === item.id && setActiveId(null)}
+                >
+                  <source src={item.audio} type="audio/mp3" />
+                </audio>
 
-              <button
-                className="w-full mt-4 bg-blue-700 hover:bg-blue-800 text-white rounded-xl py-2 flex gap-2 justify-center items-center"
-                onClick={() => togglePlay(item.id)}
-              >
-                {activeId === item.id ? <Pause /> : <Play />}
-                {activeId === item.id ? "Pause" : "Play"}
-              </button>
-            </div>
-          </motion.div>
-        ))}
+                <button
+                  className="w-full mt-4 bg-blue-700 hover:bg-blue-800 text-white rounded-xl py-2 flex gap-2 justify-center items-center"
+                  onClick={() => togglePlay(item.id)}
+                >
+                  {activeId === item.id ? <Pause /> : <Play />}
+                  {activeId === item.id ? "Pause" : "Play"}
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
+
   );
 }

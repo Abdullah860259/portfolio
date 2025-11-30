@@ -3,14 +3,16 @@ import { IoClose } from "react-icons/io5";
 import "./nav.css"
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from "framer-motion";
+
+
+
 export const Nav = React.forwardRef((props, ref) => {
-  console.log(props)
-  let showColomn = props.showColomn;
-  let setshowColomn = props.setshowColomn;
+  const [showNav, setShowNav] = useState(props.ShowNav);
+  const [showNavColomn, setshowNavColomn] = useState(false);
   useEffect(() => {
     document.body.style.overflow = 'hidden'; // disable scroll on mount
     return () => {
-      document.body.style.overflow = ''; // enable scroll on unmount
+      document.body.style.overflow = 'auto'; // enable scroll on unmount
     };
   }, []);
   return (
@@ -66,7 +68,8 @@ export const Nav = React.forwardRef((props, ref) => {
             </div>
           ) : null}
         </ul>
-        {!props.NavColomn ? (
+        {console.log("Rendering Nav with ShowNav =", showNav)}
+        {showNav ? (
           <div className='flex justify-center items-center gap-4' >
             <a href="https://wa.me/923101733247?text=Hello%2C%20I'm%20interested%20in%20your%20services%21" target="_blank" rel="noopener noreferrer" aria-label="Chat with Abdullah Anwar on WhatsApp"
 
@@ -86,34 +89,34 @@ export const Nav = React.forwardRef((props, ref) => {
             fill="#FFFFFF"
             className='cursor-pointer pointer-events-auto hover:opacity-80 duration-150 active:scale-90 transition ease-in-out'
             onClick={() => {
-              setshowColomn(!showColomn);
+              setshowNavColomn(true);
               document.body.style.overflow = 'hidden';
             }}
           >
             <path d="M120-680v-80h720v80H120Zm0 480v-80h720v80H120Zm0-240v-80h720v80H120Z" />
           </svg>)}
         <AnimatePresence>
-          {showColomn && (
+          {showNavColomn && (
             <motion.div
               className="absolute  pointer-events-auto top-0 right-0 w-1/2 h-[100dvh] z-50 bg-[rgb(4,5,24)] flex flex-col items-center justify-start py-4"
               initial={{ x: "100%" }}
-              animate={{ x: showColomn ? 0 : "100%" }}
+              animate={{ x: showNavColomn ? 0 : "100%" }}
               transition={{ duration: 0.2 }}
               exit={{ x: "100%" }}
             >
               <IoClose
                 className="text-2xl text-white self-end m-4 cursor-pointer"
                 onClick={() => {
-                  setshowColomn(!showColomn);
-                  document.body.style.overflow = '';
+                  setshowNavColomn(false);
+                  document.body.style.overflow = 'auto';
                 }}
               />
               <ul className='flex flex-col gap-5 text-white w-full mt-10'>
                 <li className='w-full ' ><Link to="/"
                   className="  p-5 rounded-sm block active:scale-90 w-full  transition active:bg-[#1784ab] hover:cursor-pointer hover:text-white  duration-200 hover:scale-105 "
                   onClick={() => {
-                    setshowColomn(!showColomn);
-                    document.body.style.overflow = '';
+                    setshowNavColomn(false);
+                    document.body.style.overflow = 'auto';
                   }}
                 >Home</Link> </li>
                 <li className='w-full' ><Link to="/profile" className="  p-5 rounded-sm block active:scale-90 w-full transition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white  duration-200 hover:scale-105 " >Profile</Link> </li>
@@ -121,7 +124,7 @@ export const Nav = React.forwardRef((props, ref) => {
                   <li
                     onClick={() => {
                       props.showContact();
-                      setshowColomn(false);
+                      setshowNavColomn(false);
                     }}
                     className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >Contact </li>
                 ) : null}
@@ -129,12 +132,12 @@ export const Nav = React.forwardRef((props, ref) => {
                   <li
                     onClick={() => {
 
-                      setshowColomn(false);
+                      setshowNavColomn(false);
                     }}
                     className='w-full p-5 rounded-sm block active:scale-90 w-fulltransition active:bg-[#1784ab]  hover:cursor-pointer hover:text-white duration-200 hover:scale-105 ' >
-                      <Link to={"/net-experience"} >
-                        NET Experience
-                      </Link> </li>
+                    <Link to={"/net-experience"} >
+                      NET Experience
+                    </Link> </li>
                 ) : null}
                 <div className='w-full p-5 flex justify-between items-center'>
                   <div className='flex justify-center items-center gap-4' >

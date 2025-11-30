@@ -8,7 +8,6 @@ import AnimateOnScroll from './AnimateOnScroll.jsx';
 import AnimateOnScrollReverse from './AnimateOnScrollReverse.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import { EffectFlip } from 'swiper/modules';
 import 'swiper/css/effect-flip';
 import { AnimateToTopAtScroll } from './AnimateToTopAtScroll.jsx';
 import emailjs from 'emailjs-com';
@@ -26,15 +25,14 @@ const Home = () => {
     const ContactButton = useRef(null);
     const [showAboutMe, setshowAboutMe] = useState(false)
     const [showTopper, setshowTopper] = useState(false);
-    const [showNavColomn, setShowNavColomn] = useState(
-        window.innerWidth < 658 // true or false initially
+    const [showNav, setShowNav] = useState(
+        window.innerWidth > 658
     );
     const [showContact, setshowContact] = useState(false);
     const [showLoading, setshowLoading] = useState(false);
     const [showError, setshowError] = useState(false);
     const [showSuccess, setshowSuccess] = useState(false);
     const [MailMessage, setMailMessage] = useState({});
-    const [showColomn, setshowColomn] = useState(false);
     useEffect(() => {
         if (window.innerWidth > 658) {
             const { render } = runMatter();
@@ -65,7 +63,7 @@ const Home = () => {
     })
     useEffect(() => {
         const handleResize = () => {
-            setShowNavColomn(window.innerWidth < 658);
+            setShowNav(window.innerWidth > 658);
         };
 
         window.addEventListener("resize", handleResize);
@@ -127,9 +125,7 @@ const Home = () => {
                     <Nav
                         ref={navAndDisc}
                         home={true}
-                        NavColomn={showNavColomn}
-                        showColomn={showColomn}
-                        setshowColomn={setshowColomn}
+                        showNav={showNav}
                         showContact={() => {
                             setshowContact(true)
                             navAndDisc.current?.classList.toggle("navAndDiscHide")
@@ -159,7 +155,7 @@ const Home = () => {
                         <button
                             className='about-btn  cursor-pointer pointer-events-auto bg-blue-500 font-poppins font-bold text-[8px] sm:text-[16px] sm:font-extrabold bg-gradient-to-l from-[#1595b6] scale-100 to-[#1f2667e6] text-white sm:py-2 sm:px-5 rounded-lg hover:scale-110 transition-scale duration-100 ease-in-out px-3 py-[6px] active:scale-90    '
                             onClick={() => {
-                                setshowAboutMe(!showAboutMe),
+                                setshowAboutMe(true),
                                     navAndDisc.current?.classList.toggle("navAndDiscHide")
                                 mainContent.current?.classList.toggle("navAndDiscHide")
                                 Linksref.current?.classList.toggle("navAndDiscHide")
@@ -187,8 +183,8 @@ const Home = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0 }}
-                        className='absolute top-0 left-0 w-full inset-0 h-full z-20 flex justify-center items-center px-2 md:px-6 overflow-y-hidden'>
-                        <div className="about-me shadow-[0_4px_10px_rgba(255,255,255,0.3)]
+                        className='absolute top-0 left-0 w-full inset-0 h-[100dvh] z-20 flex justify-center items-center px-[3px] md:px-6 overflow-y-hidden'>
+                        <div className="about-me  shadow-[0_0_15px_rgba(0,123,255,0.5)]
   rounded-2xl text-white h-auto bg-[#191919]  overflow-hidden sm:min-h-[90%] flex flex-col  md:flex-row items-center md:justify-between justify-around px-2 md:px-6 lg:px-12 py-2 md:py-8 relative">
                             <div className=' absolute hover:scale-110 transition-scale duration-100 ease-in-out active:scale-90 hover:opacity-85 top-2 right-2 z-30 cursor-pointer'
                                 onClick={() => {
@@ -201,32 +197,32 @@ const Home = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"
                                 ></line></svg>
                             </div>
-                            <div className=" select-none discription relative md:w-[45%] md:h-full sm:h-auto  w-full  flex flex-col sm:items-left items-center gap-8 sm:gap-2  sm:justify-between justify-center ">
+                            <div className=" select-none discription relative md:w-[45%] md:h-full sm:h-auto  w-full  flex flex-col sm:items-left items-center gap-3 sm:gap-2  sm:justify-between justify-center ">
                                 <h2 className='md:mb-4 mb-1  font-semibold text-[#177fa2] font-poppins text-[24px] ' >About Me</h2>
-                                <p className='sm:text-[16px] text-[12px] ' > I help business owners and busy web developers to design & develop creative websites that fits their vision and attracts the visitors to stay for ever. Technologies and tools that I use to create such awesome websites.</p>
-                                <ul className='flex flex-wrap skills' >
-                                    <li>#javascript</li>
-                                    <li>#react.js</li>
-                                    <li>#redux</li>
-                                    <li>#node.js</li>
-                                    <li>#express.js</li>
-                                    <li>#mongoDB</li>
-                                    <li>#mongoose</li>
-                                    <li>#cloudinary</li>
-                                    <li>#ejs</li>
-                                    <li>#html</li>
-                                    <li>#css</li>
-                                    <li>#sass</li>
-                                    <li>#bootstrap</li>
-                                    <li>#tailwind</li>
-                                    <li>#git</li>
-                                    <li>#github</li>
-                                    <li>#aws</li>
-                                    <li>#terminal</li>
-                                    <li>#adobeXD</li>
-                                    <li>#figma</li>
+                                <p className='text-[12px] sm:text-[16px] md:text-[16px] lg:text-[16px] font-poppins ' > I help business owners and busy web developers to design & develop creative websites that fits their vision and attracts the visitors to stay for ever. Technologies and tools that I use to create such awesome websites.</p>
+                                <ul className='flex flex-wrap' >
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#javascript</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#react.js</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#redux</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#node.js</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#express.js</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#mongoDB</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#mongoose</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#cloudinary</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#ejs</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#html</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#css</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#sass</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#bootstrap</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#tailwind</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#git</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#github</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#aws</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#terminal</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#adobeXD</li>
+                                    <li className=' border border-white/30 px-[6px] py-[2px] sm:px-2 sm:py-1 m-[2px] sm:mx-1 sm:my-1 rounded-[15px] text-[14px]' >#figma</li>
                                 </ul>
-                                <h2 className='text-3xl relative font-semibold sm:mb-4 md-1 text-[#177fa2] font-poppins text-[24px] ' >MERN STACK</h2>
+                                <h2 className=' text-xl p-0 m-0 sm:text-3xl relative font-semibold sm:mb-4 md-1 text-[#177fa2] font-poppins ' >MERN STACK</h2>
                                 <ul className='flex flex-wrap after:content[""]  MERNStack w-[300px] justify-between '>
                                     <div className="mongo flex justify-between flex-col items-center sm:h-[90px] h-[50px] ">
                                         <div className="mongo-svg"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#47A248"
