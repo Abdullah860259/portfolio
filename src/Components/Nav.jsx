@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 
 export const Nav = React.forwardRef((props, ref) => {
-  const [showNav, setShowNav] = useState(props.ShowNav);
+  const [showNav, setShowNav] = useState(props.showNav);
   const [showNavColomn, setshowNavColomn] = useState(false);
   useEffect(() => {
     document.body.style.overflow = 'hidden'; // disable scroll on mount
@@ -68,7 +68,6 @@ export const Nav = React.forwardRef((props, ref) => {
             </div>
           ) : null}
         </ul>
-        {console.log("Rendering Nav with ShowNav =", showNav)}
         {showNav ? (
           <div className='flex justify-center items-center gap-4' >
             <a href="https://wa.me/923101733247?text=Hello%2C%20I'm%20interested%20in%20your%20services%21" target="_blank" rel="noopener noreferrer" aria-label="Chat with Abdullah Anwar on WhatsApp"
