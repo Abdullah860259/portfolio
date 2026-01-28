@@ -39,6 +39,11 @@ const Home = () => {
     const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
     useEffect(() => {
+        emailjs.init(PUBLIC_KEY);
+    }, [])
+
+
+    useEffect(() => {
         if (window.innerWidth > 658) {
             const { render } = runMatter();
         }
@@ -103,21 +108,20 @@ const Home = () => {
                     name: Name,
                     email: Email,
                     message: Message,
-                },
-                PUBLIC_KEY
-            ).then(
-                (result) => {
-                    setshowLoading(false);
-                    setshowContact(false);
-                    setshowSuccess(true);
-                    console.log('Success:', result.text);
-                },
-                (error) => {
-                    setshowError(true);
-                    setshowLoading(false);
-                    console.error('Failed:', error.text);
-                }
-            );
+                })
+                .then(
+                    (result) => {
+                        setshowLoading(false);
+                        setshowContact(false);
+                        setshowSuccess(true);
+                        console.log('Success:', result.text);
+                    },
+                    (error) => {
+                        setshowError(true);
+                        setshowLoading(false);
+                        console.error('Failed:', error.text);
+                    }
+                );
         }
     }
 
