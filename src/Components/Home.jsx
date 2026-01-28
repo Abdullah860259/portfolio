@@ -33,6 +33,11 @@ const Home = () => {
     const [showError, setshowError] = useState(false);
     const [showSuccess, setshowSuccess] = useState(false);
     const [MailMessage, setMailMessage] = useState({});
+
+    const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+
     useEffect(() => {
         if (window.innerWidth > 658) {
             const { render } = runMatter();
@@ -69,9 +74,13 @@ const Home = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
     const sendEmail = (e) => {
+        e.preventDefault();
+        const { Name, Email, Message } = MailMessage
         if (!showLoading) {
-            if (MailMessage.Name === undefined || MailMessage.Email === undefined || MailMessage.Message === undefined) {
+            if (!Name?.trim() || !Email?.trim() || !Message?.trim()) {
+                console.log("Fill All Details First")
                 setshowError(true);
                 if (ContactButton.current) {
                     ContactButton.current.innerText = "Fill All Details First";
@@ -79,24 +88,23 @@ const Home = () => {
                 setshowLoading(false);
                 const time = setTimeout(() => {
                     ContactButton.current.innerText = "Submit";
-                }, 2000);
+                }, 2500);
                 return () => clearTimeout(time);
             }
             setshowLoading(true);
             navAndDisc.current?.classList.toggle("navAndDiscHide");
             mainContent.current?.classList.toggle("navAndDiscHide");
             Linksref.current?.classList.toggle("navAndDiscHide");
-            e.preventDefault();
 
             emailjs.send(
-                'service_zga3vkb',
-                'template_g8szup3',
+                SERVICE_ID,
+                TEMPLATE_ID,
                 {
-                    Name: MailMessage.Name,
-                    Email: MailMessage.Email,
-                    Message: MailMessage.Message,
+                    name: Name,
+                    email: Email,
+                    message: Message,
                 },
-                'GaAJDlPNlZ00O5E_T'
+                PUBLIC_KEY
             ).then(
                 (result) => {
                     setshowLoading(false);
@@ -106,15 +114,13 @@ const Home = () => {
                 },
                 (error) => {
                     setshowError(true);
+                    setshowLoading(false);
                     console.error('Failed:', error.text);
                 }
             );
         }
     }
-    function formInputHandler(e) {
-        setMailMessage({ ...MailMessage, [e.target.name]: e.target.value });
-        console.log(MailMessage)
-    }
+
     return (
         <>
             <AnimatePresence>
@@ -657,19 +663,19 @@ const Home = () => {
                                 <div className='w-full' >
                                     <p className='font-semibold ' >Name*</p>
                                     <input
-                                        onChange={(e) => formInputHandler(e)}
+                                        onChange={(e) => setMailMessage({ ...MailMessage, [e.target.name]: e.target.value })}
                                         className=' outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 w-full' type="text" name='Name' />
                                 </div>
                                 <div className='w-full' >
                                     <p className='font-semibold ' >Email*</p>
                                     <input
-                                        onChange={(e) => formInputHandler(e)}
+                                        onChange={(e) => setMailMessage({ ...MailMessage, [e.target.name]: e.target.value })}
                                         className=' outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 w-full' type="email" name='Email' />
                                 </div>
                                 <div className='w-full' >
                                     <p className='font-semibold ' >Message*</p>
                                     <textarea
-                                        onChange={(e) => formInputHandler(e)}
+                                        onChange={(e) => setMailMessage({ ...MailMessage, [e.target.name]: e.target.value })}
                                         className="w-full  h-20 outline-none font-poppins text-[#0d161a] mb-3 p-2 bg-transparent border-b-2 border-white " rows="6" cols="50" name='Message' />
                                 </div>
 
