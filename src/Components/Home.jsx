@@ -38,6 +38,7 @@ const Home = () => {
     const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
     const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
+    // initiating email js into the page
     useEffect(() => {
         emailjs.init(PUBLIC_KEY);
     }, [])
