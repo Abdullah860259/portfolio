@@ -586,7 +586,7 @@ const Home = () => {
             </section>
             <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
                 <p className='text-gray-700 select-none text-[12px] self-center sm:text-xs'>
-                    Hafiz Abdullah Anwar | Copyright &copy; 2025 | All Rights Reserved
+                    Hafiz Abdullah Anwar | Copyright &copy; 2026 | All Rights Reserved
                 </p>
                 <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
                     <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
