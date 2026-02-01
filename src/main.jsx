@@ -6,6 +6,7 @@ import './fonts.css'
 import { BrowserRouter } from 'react-router-dom';
 import ToasterWrapper from './Components/ToasterWrapper';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <React.StrictMode>

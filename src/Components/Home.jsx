@@ -14,6 +14,7 @@ import emailjs from 'emailjs-com';
 import Error from './Error.jsx'
 import Success from './Success.jsx'
 import { EffectCoverflow } from 'swiper/modules';
+
 import Footer from './Footer.jsx';
 
 
@@ -584,7 +585,40 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
+                <p className='text-gray-700 select-none text-[12px] self-center sm:text-xs'>
+                    Hafiz Abdullah Anwar | Copyright &copy; 2026 | All Rights Reserved
+                </p>
+                <a href="/" className='hover:scale-110 transition duration-100 active:scale-90'>
+                    <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="16"></path>
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="16"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1595B6"></stop>
+                                <stop offset="1" stop-color="#1595B6" stop-opacity="0"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <ul className='flex justify-center items-center gap-4 flex-row ' >
+                    <li class="linkedin-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90 ">
+                        <a href="https://www.linkedin.com/in/abdullah-anwar-a4013633a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="twitter-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://x.com/Abdulla55799774" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="instagram-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://www.instagram.com/abdu_7817/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="gmail-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="mailto:abdullah860259@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                    </li>
+                    <li class="github-icon  text-[#1788ae] hover:scale-110 transition duration-100 active:scale-90">
+                        <a href="https://github.com/Abdullah860259" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                </ul>
+            </footer>
             <AnimatePresence>
                 {showContact && (
                     <div className='absolute select-none pointer-events-auto top-0 right-0 bottom-0 left-0 w-full h-full z-50 sm:py-10 sm:px-16  flex  justify-between items-center' >
@@ -667,28 +701,34 @@ const Home = () => {
                     </div>
                 )}
             </AnimatePresence>
-            {showError && (
-                <Error
-                    decs="Something went wrong!"
-                    onClose={() => setshowError(false)}
-                />
-            )}
-            {showSuccess && (
-                <Success
-                    onClose={() => setshowSuccess(false)}
-                    decs="Message sent successfully!"
-                />
-            )}
-            {showTopper && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
-                </motion.div>
-            )}
+    {
+        showError && (
+            <Error
+                decs="Something went wrong!"
+                onClose={() => setshowError(false)}
+            />
+        )
+    }
+    {
+        showSuccess && (
+            <Success
+                onClose={() => setshowSuccess(false)}
+                decs="Message sent successfully!"
+            />
+        )
+    }
+    {
+        showTopper && (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
+            </motion.div>
+        )
+    }
         </>
     )
 }
