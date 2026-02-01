@@ -585,7 +585,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
+            {/* <footer className=' w-full h-auto flex justify-center items-center gap-4 flex-col p-4 sm:p-10 '>
                 <p className='text-gray-700 select-none text-[12px] self-center sm:text-xs'>
                     Hafiz Abdullah Anwar | Copyright &copy; 2026 | All Rights Reserved
                 </p>
@@ -618,7 +618,8 @@ const Home = () => {
                         <a href="https://github.com/Abdullah860259" target="_blank"><i class="fab fa-github"></i></a>
                     </li>
                 </ul>
-            </footer>
+            </footer> */}
+            <Footer/>
             <AnimatePresence>
                 {showContact && (
                     <div className='absolute select-none pointer-events-auto top-0 right-0 bottom-0 left-0 w-full h-full z-50 sm:py-10 sm:px-16  flex  justify-between items-center' >
