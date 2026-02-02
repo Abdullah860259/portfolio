@@ -14,7 +14,7 @@ import emailjs from 'emailjs-com';
 import Error from './Error.jsx'
 import Success from './Success.jsx'
 import { EffectCoverflow } from 'swiper/modules';
-
+import ScrollToTop from './ScrollToTop.jsx';
 import Footer from './Footer.jsx';
 
 
@@ -421,7 +421,7 @@ const Home = () => {
                                 <a href="https://projectabdullah.netlify.app" className='flex  justify-center items-center' target="_blank" rel="noopener noreferrer">
                                     <img className='sm:w-[260px] relative z-30 md:w-[330px] lg:w-[450px] w-[85%] h-auto ml-0 sm:mr-10 hover:scale-110 transition duration-100 ease-in  ' src="/2.webp" alt="Project 1" />
                                 </a>
-                                <span className='w-auto opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 flex justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#fc0307] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#fc0307] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
+                                <span className='w-auto hidden md:flex opacity-0 group-hover:opacity-100 group-hover:-translate-y-12 justify-center items-center gap-2 transition duration-200  ease-jump  h-auto px-5 py-2 bg-[#fc0307] rounded-lg absolute -top-[30px] left-1/2 -translate-x-[80px] text-white z-50 after:content-[""] after:absolute after:w-[15px] after:h-[15px] after:bg-[#fc0307] font-bold after:top-[30px] after:rounded-sm after:left-1/2 after:-translate-x-1/2 after:rotate-45' >
                                     Netflix Clone
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
                                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -619,7 +619,7 @@ const Home = () => {
                     </li>
                 </ul>
             </footer> */}
-            <Footer/>
+            <Footer />
             <AnimatePresence>
                 {showContact && (
                     <div className='absolute select-none pointer-events-auto top-0 right-0 bottom-0 left-0 w-full h-full z-50 sm:py-10 sm:px-16  flex  justify-between items-center' >
@@ -702,34 +702,24 @@ const Home = () => {
                     </div>
                 )}
             </AnimatePresence>
-    {
-        showError && (
-            <Error
-                decs="Something went wrong!"
-                onClose={() => setshowError(false)}
-            />
-        )
-    }
-    {
-        showSuccess && (
-            <Success
-                onClose={() => setshowSuccess(false)}
-                decs="Message sent successfully!"
-            />
-        )
-    }
-    {
-        showTopper && (
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="toper w-[50px] h-[50px] rounded-full fixed bottom-5 right-5 bg-[#1595B6] flex justify-center items-center cursor-pointer hover:scale-110 active:scale-90 transition duration-200 z-1000 after:content-[''] after:w-full after:h-full after:border-2 after:border-black after:absolute after:rounded-full after:-z-10"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M440-240v-368L296-464l-56-56 240-240 240 240-56 56-144-144v368h-80Z" /></svg>
-            </motion.div>
-        )
-    }
+            {
+                showError && (
+                    <Error
+                        decs="Something went wrong!"
+                        onClose={() => setshowError(false)}
+                    />
+                )
+            }
+            {
+                showSuccess && (
+                    <Success
+                        onClose={() => setshowSuccess(false)}
+                        decs="Message sent successfully!"
+                    />
+                )
+            }
+            <ScrollToTop showTopper={showTopper} />
+
         </>
     )
 }

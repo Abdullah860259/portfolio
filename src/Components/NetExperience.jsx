@@ -99,7 +99,7 @@ export default function NetExperience() {
       <Nav home={false} ShowNav={ShowNav} />
       <div className="select-none pt-24 sm:pt-28 text-blue-400 p-6">
         <motion.h1
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className=" text-2xl sm:text-3xl font-bold mb-6 sm:mb-16 text-center"
