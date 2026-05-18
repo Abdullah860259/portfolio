@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import NetExperience from './Components/NetExperience';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/net-experience" element={<NetExperience />} />
                 </Routes>
             </div>
+            <Analytics />
         </>
     );
 }
