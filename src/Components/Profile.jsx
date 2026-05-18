@@ -25,7 +25,6 @@ const Profile = () => {
         const handleResize = () => {
             setShowNav(window.innerWidth > 658);
         };
-        console.log(ShowNav,";asdkfjkasdkf;");
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
