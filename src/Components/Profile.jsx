@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Nav from './Nav'
 import "./profile.css"
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, useScroll } from 'framer-motion'
 import { RxCross2 } from "react-icons/rx";
 import { motion } from "framer-motion";     // Radix Icons
 
@@ -25,7 +25,6 @@ const Profile = () => {
         const handleResize = () => {
             setShowNav(window.innerWidth > 658);
         };
-        console.log(ShowNav,";asdkfjkasdkf;");
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
