@@ -1,0 +1,209 @@
+.bg-logo {
+    background-image: url(/name-logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    transform: translateY(-50px);
+}
+
+
+@media (max-width:580px) {
+    .bg-logo {
+        width: 300px;
+        height: 300px
+    }
+
+    .skills>li {
+        padding: 4px 5px;
+        font-size: 11px;
+    }
+}
+
+
+@media (max-width:380px) {
+    .bg-logo {
+        width: 200px;
+        height: 200px;
+        transform: translateY(-65px);
+    }
+
+}
+
+@keyframes spin-slow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes aboutAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.about-btn {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    animation: aboutAnimation 1.5s ease-in-out;
+    /* animation-delay: 0.5s; */
+}
+
+.about-btn::after {
+    content: '';
+    background-image: url(/right-arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 20%;
+    left: 95px;
+    transform: translateY(-7.5px);
+    transition: left 0.15s ease-in-out;
+}
+
+.about-btn:hover::after {
+    left: 105px;
+}
+
+@media (max-width: 640px) {
+    .about-btn::after {
+        content: none;
+        /* hides the arrow */
+        display: none;
+    }
+}
+
+.latestprojects-btn {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.latestprojects-btn::after {
+    content: '';
+    background-image: url(/right-arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 35px;
+    left: 30%;
+    transform: translateY(-7.5px);
+    transition: top 0.15s ease-in-out;
+    transform: rotate(90deg);
+}
+
+.latestprojects-btn:hover::after {
+    top: 40px
+}
+
+@media (max-width: 640px) {
+    .latestprojects-btn::after {
+        content: none;
+        /* hides the arrow */
+        display: none;
+    }
+}
+
+
+.skills>li {
+    border: 1px solid #ffffff52;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.show {
+    scale: 1;
+    opacity: 1;
+    transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.hide {
+    scale: 0.25;
+    opacity: 0;
+    transition: scale 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.MERNStack>div {
+    transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
+}
+
+.MERNStack>div:hover {
+    cursor: pointer;
+    scale: 1.15;
+    transition: scale 0.1s ease-in-out, padding 0.1s ease-in-out;
+    background-color: #1f2667e6;
+    border-radius: 10px;
+    padding: 20px 0px;
+}
+
+.MERNStack>div::after {
+    text-align: center;
+    width: 140px;
+    height: 40px;
+    padding: 10px 0px;
+    border-radius: 20px;
+    top: -20px;
+    left: -75%;
+    position: absolute;
+    z-index: -1;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.MERNStack>div:nth-child(1)::after {
+    content: 'MongoDB';
+    background-color: #47a248;
+}
+
+.MERNStack>div:nth-child(2)::after {
+    content: 'Express';
+    background-color: #ffffff;
+    color: black;
+}
+
+.MERNStack>div:nth-child(3)::after {
+    content: 'React';
+    background-color: #61DBFB;
+    color: black;
+}
+
+.MERNStack>div:nth-child(4)::after {
+    content: 'Node.js';
+    background-color: #3C873A;
+}
+
+.MERNStack>div:hover::after {
+    top: -60%;
+    transition: top 0.15s ease-in-out;
+}
+
+
+.navAndDiscHide {
+    opacity: 0;
+}
+
+.editor:hover::before {
+    transform: translate(-50%, -50%) scale(1.6);
+}

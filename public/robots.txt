@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hafizabdullahanwar.vercel.app/sitemap.xml
