@@ -96,7 +96,8 @@ export default function NetExperience() {
 
   return (
     <div className="bg-[#111111]  overflow-auto" style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }} >
-      <Nav home={false} ShowNav={ShowNav} />
+      {console.log(ShowNav)}
+      <Nav home={false} showNav={ShowNav} />
       <div className="select-none pt-24 sm:pt-28 text-blue-400 p-6">
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
